@@ -20,7 +20,7 @@ export default function Contact() {
           <p className="mt-4 text-xl">We&apos;re here to help! Drop us a message.</p>
         </header>
 
-        <main className="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8">
+        <main className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <section className="py-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="space-y-4">

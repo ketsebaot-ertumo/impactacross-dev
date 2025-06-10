@@ -6,13 +6,14 @@ import API from './api';
 export async function getLatestBlogPost() {
     try {
         const res = await API.get('/blog/latest');
+        console.log("\n\nres:", res)
         if (res?.status === 200 || res?.data?.sucess) {
             return res.data.data;
         }
-        return null;
+        return res.data;
     } catch (err) {
         console.error("Error fetching latest blog post:", err);
-        throw err;
+        return err.message;
     }
 };
 
