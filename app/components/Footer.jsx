@@ -2,8 +2,77 @@
 
 import { Email, Facebook, Instagram, LinkedIn, Mail, Phone, Twitter } from "@mui/icons-material";
 import { MapPin } from "lucide-react";
+import { useEffect, useState } from "react";
+import { getLatestData } from "../lib/routes";
 
 export default function Footer() {
+    const fallbackData = {
+      logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749714702/ImpactAcross/owner/logo1_ekrjmf.png",
+      primary_color: "#007A33",
+      name: "ImpactAcross",
+      title: "Development Research and Consultancy PLC",
+      email: "info@impactacross.com",
+      links: [
+          {
+              label: "linkedin",
+              url: "https://linkedin.com/in/",
+          },
+          {
+              label: "twitter",
+              url: "https://twitter.com/",
+          },
+          {
+              label: "facebook",
+              url: "https://linkedin.com/in/",
+          },
+          {
+              label: "instagram",
+              url: "https://www.instagram.com/",
+          }
+      ],
+      phones: [
+          {
+              id: "y8d47dyjrd4338q3trg0d",
+              owner_id: "fcciuxdzhlemjomgmlirl",
+              number: "+251984811023",
+          },
+          {
+              id: "38okyxvlzey8gceu31agi",
+              owner_id: "fcciuxdzhlemjomgmlirl",
+              number: "+251911364755",
+          }
+      ],
+      locations: [
+          {
+              id: "fcwg3upe6c6u75uwiiuo8",
+              owner_id: "fcciuxdzhlemjomgmlirl",
+              address: "Addis Ababa, Ethiopia",
+          },
+          {
+              id: "u9bcc6dcygjbj6d8ku3qf",
+              owner_id: "fcciuxdzhlemjomgmlirl",
+              address: "7550, Cape Town, South Africa",
+          }
+      ]
+  }
+  const [data, setData] = useState(fallbackData);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const {data} = await getLatestData("owners");
+          console.log(data)
+          if (data) {
+            setData(data);
+          }
+        } catch (err) {
+          console.error("Failed to load data:", err);
+        }
+      };
+  
+      fetchData();
+    }, []);
+
   return (
     <footer className="bg-gray-900 text-gray-400 py-10 px-8 text-sm">
       <div className="max-w-6xl mx-auto">
@@ -12,12 +81,12 @@ export default function Footer() {
           {/* Company Information */}
           <div className="space-y-2">
             <img 
-              src="/logo.png"
+              src={data?.logo_url || `/logo1.png`}
               alt="Company Logo" 
-              className="h-14 w-14"
+              className="h-20 w-20"
             />
-            <p className="text-lg font-semibold text-blue-500 pt-2">ImpactAcross</p>
-            <p className="font-semibold w-60 lg:w-60">If you have a Vision We will help you to turn it into reality.</p>
+            <p className="text-lg font-semibold text-blue-500 pt-2">{data?.name || "ImpactAcross"}</p>
+            <p className="font-semibold w-60 lg:w-60">{data?.title || "If you have a Vision We will help you to turn it into reality."}</p>
           </div>
 
           {/* Navigation Links */}
@@ -35,31 +104,38 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4 text-lg">Contact Us</h3>
             <ul className="space-y-2">
-                <li className="flex items-center space-x-2">
+              {/* Locations */}
+              {data?.locations.map((loc, index) => (
+                <li key={`location-${index}`} className="flex items-center space-x-2">
                   <MapPin className="text-gray-400 w-5 h-5" />
-                  <span>Addis Ababa, Ethiopia</span>
+                  <span>{loc.address}</span>
                 </li>
-                <li className="flex items-center space-x-2">
-                  <MapPin className="text-gray-400 w-5 h-5" />
-                  <span>Cape Town, 7550,South Africa</span> 
-                </li>
+              ))}
+
+              {/* Email */}
+              {data?.email && (
                 <li className="flex items-center space-x-2">
                   <Mail className="text-blue-600 w-5 h-5" />
-                  <a href="mailto:info@abbabor.com" className="hover:underline">info@abbabor.com</a>
+                  <a href={`mailto:${data?.email}`} className="hover:underline">
+                    {data?.email}
+                  </a>
                 </li>
-                <li className="flex items-center space-x-2">
+              )}
+
+              {/* Phones */}
+              {data?.phones.map((phone, index) => (
+                <li key={`phone-${index}`} className="flex items-center space-x-2">
                   <Phone className="text-green-500 w-5 h-5" />
-                  <a href="tel:+251911364755" className="hover:underline">+251911364755</a>
+                  <a href={`tel:${phone.number}`} className="hover:underline">
+                    {phone.number}
+                  </a>
                 </li>
-                <li className="flex items-center space-x-2">
-                  <Phone className="text-green-500 w-5 h-5" />
-                  <a href="tel:+251984811023" className="hover:underline">+251984811023</a>
-                </li>
+              ))}
             </ul>
           </div>
 
           {/* Social Media Links */}
-          <div>
+          {/* <div>
             <h3 className="text-lg font-semibold text-white mb-4">Follow Us</h3>
             <div className="flex space-x-4">
                 <a href="https://facebook.com/" className="hover:text-blue-600"><Facebook /></a>
@@ -67,7 +143,48 @@ export default function Footer() {
                 <a href="https://www.linkedin.com/" className="hover:text-blue-600"><LinkedIn /></a>
                 <a href="https://www.instagram.com/" className="hover:text-pink-500"><Instagram /></a>
             </div>
-          </div>
+          </div> */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-4">Follow Us</h3>
+            <div className="flex space-x-4">
+                {data?.links?.map((link, index) => {
+                  let Icon;
+                  switch (link.label.toLowerCase()) {
+                    case "facebook":
+                      Icon = Facebook;
+                      break;
+                    case "twitter":
+                      Icon = Twitter;
+                      break;
+                    case "linkedin":
+                      Icon = LinkedIn;
+                      break;
+                    case "instagram":
+                      Icon = Instagram;
+                      break;
+                    case "email":
+                      Icon = Mail;
+                      break;
+                    default:
+                      return null; // skip unknown platforms
+                  }
+
+                  return (
+                    <a
+                      key={`social-${index}`}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-white"
+                      title={link.label}
+                    >
+                      <Icon className="text-xl" />
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+
         </div>
 
         {/* Footer Bottom */}

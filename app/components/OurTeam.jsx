@@ -3,66 +3,92 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { FaLinkedin, FaTwitter } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { getAllData } from "../lib/routes";
 
-const teamMembers = [
+const teamData = [
   {
-    id: 1,
-    name: "Kassahun K. Suleman(PhD)",
-    position: "Founder & CEO",
-    image: "/ourTeam.png",
-    linkedin: "https://linkedin.com/in/johndoe",
-    twitter: "https://twitter.com/johndoe",
-    email: "kassahunks@abbabor.com",
-  },
-  {
-    id: 2,
-    name: "Mr. Abraham Getachew",
-    position: "Operation Manager",
-    image: "/ourTeam.png",
-    linkedin: "https://linkedin.com/in/janimage",
-    twitter: "https://twitter.com/janesmith",
-    email: "abrahamg@abbabor.com"
-  },
-  {
-    id: 3,
-    name: "Zerihun Berhane(PhD)",
-    position: "Research Associate",
-    image: "/ourTeam.png",
-    linkedin: "https://linkedin.com/in/janesmith",
-    twitter: "https://twitter.com/janesmith",
-    email: "test@abbabor.com"
-  },
-  {
-    id: 4,
-    name: "Ross Harvey",
-    position: "Research Associate",
-    image: "/ourTeam.png",
-    linkedin: "https://linkedin.com/in/janesmith",
-    twitter: "https://twitter.com/janesmith",
-    email: "test@abbabor.com"
-  },
-  {
-    id: 5,
-    name: "Mr. Cyriaque Hakizimana",
-    position: "Research Associate",
-    image: "/ourTeam.png",
-    linkedin: "https://linkedin.com/in/janesmith",
-    twitter: "https://twitter.com/janesmith",
-    email: "test@abbabor.com"
-  },
-  {
-    id: 6,
-    name: "Elise van der Mark",
-    position: "Research Associate",
-    image: "/ourTeam.png",
-    linkedin: "https://linkedin.com/in/janesmith",
-    twitter: "https://twitter.com/janesmith",
-    email: "test@abbabor.com"
-  },
-];
+    title: "Meet Our Team",
+    description: "ADC prides itself on bringing to our clients a team of highly qualified, energetic, and dynamic professionals. We have over 40 roster-based temporary and full-time multidisciplinary professionals, each specializing in their respective fields.",
+    teams: [
+      {
+        id: "1",
+        name: "Kassahun K. Suleman(PhD)",
+        position: "Founder & CEO",
+        image: "/ourTeam.png",
+        linkedin: "https://linkedin.com/in/johndoe",
+        facebook: "https://facebook.com",
+        email: "kassahunks@impactacross.com",
+      },
+      {
+        id: "2",
+        name: "Mr. Abraham Getachew",
+        position: "Operation Manager",
+        image: "/ourTeam.png",
+        linkedin: "https://linkedin.com/in/janimage",
+        facebook: "https://facebook.com",
+        email: "abrahamg@impactacross.com"
+      },
+      {
+        id: "3",
+        name: "Zerihun Berhane(PhD)",
+        position: "Research Associate",
+        image: "/ourTeam.png",
+        linkedin: "https://linkedin.com/in/janesmith",
+        facebook: "https://facebook.com",
+        email: "test@impactacross.com"
+      },
+      {
+        id: "4",
+        name: "Ross Harvey",
+        position: "Research Associate",
+        image: "/ourTeam.png",
+        linkedin: "https://linkedin.com/in/janesmith",
+        facebook: "https://facebook.com",
+        email: "test@impactacross.com"
+      },
+      {
+        id: "5",
+        name: "Mr. Cyriaque Hakizimana",
+        position: "Research Associate",
+        image: "/ourTeam.png",
+        linkedin: "https://linkedin.com/in/janesmith",
+        facebook: "https://facebook.com",
+        email: "test@impactacross.com"
+      },
+      {
+        id: "6",
+        name: "Elise van der Mark",
+        position: "Research Associate",
+        image: "/ourTeam.png",
+        linkedin: "https://linkedin.com/in/janesmith",
+        facebook: "https://facebook.com",
+        email: "test@impactacross.com"
+      },
+    ]
+  }
+]
 
 export default function OurTeam() {
+  const [data, setData] = useState(teamData);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const {data: response} = await getAllData("admin/sections/values/team");
+        const [data] = response;
+        if (data) {
+          setData(data);
+        }
+      } catch (err) {
+        console.error("Failed to load data:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <section id="team" className="py-16 px-6 text-gray-600 bg-gray-50">
       <div className="max-w-6xl mx-auto text-center">
@@ -73,7 +99,7 @@ export default function OurTeam() {
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: false }}
         >
-          Meet Our Team
+          {data?.title || "Meet Our Teams"}
         </motion.h2>
         <div className="relative flex items-center justify-center mb-8 pt-2">
           <div className="w-32 border-t-2 border-gray-400"></div>
@@ -86,26 +112,26 @@ export default function OurTeam() {
           viewport={{ once: false }}
         >
           <i>
-            ADC prides itself on bringing to our clients a team of highly qualified, energetic, and dynamic professionals. We have over 40 roster-based temporary and full-time multidisciplinary professionals, each specializing in their respective fields.
+            {data?.description}
           </i>
         </motion.p>
 
         <div className="flex flex-wrap justify-center gap-12 mt-12">
-          {teamMembers.map((member, index) => (
+          {data?.teams && data?.teams?.map((member, index) => (
             <motion.div
               key={index}
               className={`bg-white p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all duration-300 w-80 text-center
-                ${index === teamMembers.length - 1 && index % 2 === 0 ? "max-w-sm md:col-span-2 md:justify-self-center" : ""}`}
+                ${index === data.teams.length - 1 && index % 2 === 0 ? "max-w-sm md:col-span-2 md:justify-self-center" : ""}`}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.4 }}
               viewport={{ once: false }}
             >
-              <Link href={`/team-detail/${member.id}`} className="block">
+              <Link href={`/team-detail/${member?.id}`} className="block">
                 <div className="flex items-center justify-center mb-4">
                   <Image
-                    src={member.image}
-                    alt={member.name}
+                    src={member?.image_url || member.image}
+                    alt={member?.name}
                     width={120}
                     height={120}
                     className="rounded-full border-4 border-gray-200 shadow-lg"
@@ -119,8 +145,8 @@ export default function OurTeam() {
                 <Link href={member.linkedin} target="_blank" prefetch={true}>
                   <FaLinkedin className="text-blue-600 text-2xl hover:text-blue-800 transition-colors" />
                 </Link>
-                <Link href={member.twitter} target="_blank" prefetch={true}>
-                  <FaTwitter className="text-blue-400 text-2xl hover:text-blue-600 transition-colors" />
+                <Link href={member?.facebook} target="_blank" prefetch={true}>
+                  <FaFacebook className="text-blue-400 text-2xl hover:text-blue-600 transition-colors" />
                 </Link>
               </div>
             </motion.div>

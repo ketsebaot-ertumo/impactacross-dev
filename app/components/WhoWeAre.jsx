@@ -1,22 +1,42 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { getLatestData } from "../lib/routes";
+
 export default function WhoWeAre() {
+  const [data, setData] = useState({});
+    
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const {data} = await getLatestData("admin/who-we-are-contents");
+          if (data) {
+            setData(data);
+          }
+        } catch (err) {
+          console.error("Failed to load data:", err);
+        }
+      };
+  
+      fetchData();
+    }, []);
+
   return (
-    <section className="max-w-6xl mx-auto px-6 py-20">
+    <section id="about" className="scroll-mt-24 max-w-6xl mx-auto px-6 py-20">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Text Section */}
         <div className="space-y-6">
-          <h2 className="text-4xl font-extrabold text-gray-900 leading-tight animate-fade-in">
+          <h2 className="text-4xl font-semibold text-gray-600 leading-tight animate-fade-in">
             Who We Are
           </h2>
           <p className="text-gray-700 leading-relaxed text-lg animate-fade-in delay-200">
-            Abbabor Development Consult (ADC) is an Ethiopia-based consulting firm dedicated to 
-            providing research solutions that empower governments and development organizations 
-            in achieving social and economic progress. <br /><br />
-            Our expertise lies in designing, monitoring, and evaluating strategies aligned with 
+            {data?.description1 || `Abbabor Development Consult (ADC) is an Ethiopia-based consulting firm dedicated to 
+            providing research solutions that empower governments and development organizations in achieving social and 
+            economic progress.`} <br /><br />
+            {data?.description2 || `Our expertise lies in designing, monitoring, and evaluating strategies aligned with 
             local and global development objectives. Through evidence-based policy and rigorous 
             research, we strive to create meaningful impact and sustainable solutions for Africa&apos;s 
-            future.
+            future.`}
           </p>
         </div>
 
@@ -24,7 +44,7 @@ export default function WhoWeAre() {
         <div className="relative group">
           <div className="overflow-hidden rounded-3xl shadow-lg">
             <img
-              src="/whoWeAre.png"
+              src={data?.image_url || "/whoWeAre.png"}
               alt="Who We Are"
             />
           </div>

@@ -18,7 +18,6 @@ export default function Blogs() {
     const [pageSize, setPageSize] = useState(2);
 
     useEffect(() => {
-        console.log("Fetching page:", currentPage);
         const loadBlogs = async () => {
             try {
                 const response = await getAllBlogs(currentPage, pageSize);

@@ -1,8 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion"; // For smooth animations
+import { getAllData } from "../lib/routes";
 
-const data = [
+const valuesData = [
   {
     title: "Mission",
     description:
@@ -24,6 +25,22 @@ export default function MissionVisionObjective() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isMediumScreen, setIsMediumScreen] = useState(false);
+  const [data, setData] = useState(valuesData);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const {data} = await getAllData("admin/sections/values/value");
+        if (data) {
+          setData(data);
+        }
+      } catch (err) {
+        console.error("Failed to load data:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   // Check screen size on mount and resize
   useEffect(() => {

@@ -22,7 +22,7 @@ export async function GET(request) {
   // 🚀 NEW: Build full backend URL
   const apiUrl = `${API_URL}${path}${queryString ? `&${queryString}` : ''}`;
 
-  console.log("\n\n Forwarding to backend:", apiUrl, "\n\n");
+  // console.log("\n\n Forwarding to backend:", apiUrl, "\n\n");
 
   try {
     const cookie = request.headers.get('cookie') || '';

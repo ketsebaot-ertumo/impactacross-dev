@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { getAllData } from "../lib/routes";
 
-const data = [
+const aboutData = [
   {
     image: "/home2.jpg",
     title: "Analysis",
@@ -25,6 +26,24 @@ export default function WhatWeDo() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const scrollRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [data, setData] = useState(aboutData);
+  const [section, setSection] = useState({});
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const {data} = await getAllData("admin/what-we-do-images");
+        if (data) {
+          setSection(data?.[0].section)
+          setData(data);
+        }
+      } catch (err) {
+        console.error("Failed to load data:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
   
   const scrollToIndex = (index) => {
     if (scrollRef.current) {
@@ -58,12 +77,12 @@ export default function WhatWeDo() {
       {/* Large Screen Layout */}
       <div className="hidden lg:block bg-gray-50 text-gray-600 py-16 px-8 border-gray-300 border-t">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold">What We Do</h2>
+          <h2 className="text-4xl font-bold">{section?.title || "What We Do"}</h2>
           <div className="relative flex items-center justify-center mb-8 pt-4">
             <div className="w-32 border-t-2 border-gray-300"></div>
           </div>
           <p className="max-w-2xl mx-auto text-lg">
-            <i>Our approach integrates research, strategy, and action to create meaningful and lasting impact.</i>
+            <i>{section?.description || "Our approach integrates research, strategy, and action to create meaningful and lasting impact."}</i>
           </p>
         </div>
 
@@ -77,8 +96,9 @@ export default function WhatWeDo() {
               whileHover={{ scale: 1.05 }}
             >
               <img
-                src={item.image}
-                alt={item.title}
+                // src={item.image}
+                src={item?.image_url || item.image}
+                alt={item?.title || item.title}
                 className="w-full h-64 object-cover transition-all duration-500 ease-in-out group-hover:brightness-50"
               />
               <div

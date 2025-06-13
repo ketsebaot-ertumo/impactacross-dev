@@ -1,10 +1,31 @@
 "use client";
+import { useEffect, useState } from "react";
+import { getAllData } from "../lib/routes";
 import MissionVisionObjective from "./MissionVisionObjectives";
-import OurSectorialFocus from "./OurSectorialFocus";
-import WhyChooseUs from "./WhyChooseUs";
 
 
 export default function Home() {
+
+  const [data, setData] = useState([]);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const {data} = await getAllData("admin/sections/values/home");
+        if (data) {
+          const [newData] = data;
+          setData(newData);
+          // setData(data);
+        }
+      } catch (err) {
+        console.error("Failed to load data:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
+  
+
   return (
     <>
       <div className="text-gray-600">
@@ -18,7 +39,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-black opacity-40 w-full"></div>
           <div className="absolute inset-0 flex items-center justify-center px-4">
             <p className="text-white text-lg md:text-4xl font-bold text-center break-words max-w-[90%] md:max-w-[800px]">
-              Improving lives by bridging the vital connections between health, environment, and development.
+              { data?.description || "Improving lives by bridging the vital connections between health, environment, and development"}
             </p>
           </div>
         </div>

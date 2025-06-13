@@ -1,15 +1,84 @@
 
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { usePathname } from "next/navigation";  // Import usePathname
+import { usePathname } from "next/navigation"; 
+import { getAllData, getLatestData } from "../lib/routes";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const pathname = usePathname();  // Get the current pathname
+  const pathname = usePathname();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const {data} = await getLatestData("owners");
+        if (data) {
+          setData(data);
+        }
+      } catch (err) {
+        console.error("Failed to load data:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  
+  // useEffect(() => {
+  //   if (!data?.font_family) return;
+  
+  //   const fontFamily = data.font_family;
+  //   const fontUrl = data.font_url; // optional
+  
+  //   // Clean up old dynamic fonts
+  //   const existingLink = document.getElementById("dynamic-font-link");
+  //   if (existingLink) existingLink.remove();
+  
+  //   // Helper: set CSS variable
+  //   const setFont = () => {
+  //     document.documentElement.style.setProperty('--dynamic-font-family', `'${fontFamily}', sans-serif`);
+  //   };
+  
+  //   // Case 1: Use Google Fonts if no custom URL
+  //   if (!fontUrl) {
+  //     console.log("new")
+  //     const googleFontName = fontFamily.replace(/ /g, '+');
+  //     const link = document.createElement("link");
+  //     link.id = "dynamic-font-link";
+  //     link.rel = "stylesheet";
+  //     link.href = `https://fonts.googleapis.com/css2?family=${googleFontName}:wght@400;500;600;700;800;900&display=swap`;
+  //     link.onload = setFont;
+  //     link.onerror = () => {
+  //       console.warn(`Google Font ${fontFamily} not found. Falling back to system font.`);
+  //       setFont(); // fallback to system-installed font
+  //     };
+  //     document.head.appendChild(link);
+  //   }
+  
+  //   // Case 2: Use custom URL for @font-face
+  //   else {
+  //     console.log("else")
+  //     const font = new FontFace(fontFamily, `url(${fontUrl})`, {
+  //       weight: '700',
+  //       style: 'normal'
+  //     });
+  //     font.load()
+  //       .then((loadedFont) => {
+  //         document.fonts.add(loadedFont);
+  //         setFont();
+  //       })
+  //       .catch((err) => {
+  //         console.warn(`Custom font "${fontFamily}" failed to load:`, err);
+  //         setFont(); // fallback to system-installed font
+  //       });
+  //   }
+  // }, [data]);
+  
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -17,8 +86,8 @@ export default function Header() {
 
   const navLinks = [
     { title: "Home", path: "/" },
-    { title: "About", path: "/about" },
-    { title: "Services", path: "/services" },
+    { title: "About", path: "#about" },
+    { title: "Services", path: "#services" },
     { title: "Resources", path: "/resources" },
     { title: "Contact", path: "/contact" },
   ];
@@ -39,14 +108,15 @@ export default function Header() {
             <div className="flex justify-between items-center space-x-4 py-3">
               <Link href="/" prefetch={true}>
                 <img 
-                  src="/logo.png"
+                  // src="/logo.png"
+                  src={data?.logo_url || "/logo1.png"}
                   alt="Company Logo" 
-                  className="h-14 w-14"
+                  className="h-22 w-22"
                 />
               </Link>
               <div>
-                <span className="text-xl lg:text-3xl font-semibold ">ImpactAcross</span>
-                <p className="text-[10px] font-semibold hidden md:block">ImpactAcross Development Research and Consultancy PLC</p>
+                <h1 className="text-xl lg:text-3xl font-semibold">{data?.name || "ImpactAcross"}</h1>
+                <p className="text-[10px] font-semibold hidden md:block">{data?.title || "Development Research and Consultancy PLC"}</p>
               </div>
             </div>
 
@@ -56,7 +126,7 @@ export default function Header() {
                 <Link
                   key={link.title}
                   href={link.path}
-                  className={`px-3 py-2 rounded-md transition-colors duration-200 hover:text-blue-600 ${
+                  className={`px-3 py-2 rounded-md transition-colors duration-200 hover:text-blue-600 text-xl ${
                     isActiveLink(link.path)
                       ? 'text-blue-600 font-bold'
                       : 'text-gray-900'
