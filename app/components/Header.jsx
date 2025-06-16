@@ -109,7 +109,7 @@ export default function Header() {
               <Link href="/" prefetch={true}>
                 <img 
                   // src="/logo.png"
-                  src={data?.logo_url || "/logo1.png"}
+                  src={data?.logo_url || "/logo2.png"}
                   alt="Company Logo" 
                   className="h-22 w-22"
                 />
@@ -126,7 +126,7 @@ export default function Header() {
                 <Link
                   key={link.title}
                   href={link.path}
-                  className={`px-3 py-2 rounded-md transition-colors duration-200 hover:border text-xl ${
+                  className={`px-3 py-2 rounded-md transition-colors duration-200 hover:border text-lg ${
                     isActiveLink(link.path)
                       ? 'border font-bold'
                       : 'text-gray-900'

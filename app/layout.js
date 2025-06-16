@@ -31,8 +31,8 @@ export const metadata = {
   keywords: ["impactacross", "consultancy", "development", "sustainability", "reasearch"],
   authors: [{ name: "Ketsebaot Ertumo", url: "https://ketsebaot.vercel.app" }],
   icons: {
-    icon: '/logo1.png',
-    apple: '/logo1.png'
+    icon: '/logo1.jpeg',
+    apple: '/logo1.lpeg'
   },
   openGraph: {
     title: "ImpactAcross Development Research and Consultancy PLC",

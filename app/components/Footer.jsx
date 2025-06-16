@@ -81,11 +81,11 @@ export default function Footer() {
           {/* Company Information */}
           <div className="space-y-2">
             <img 
-              src={data?.logo_url || `/logo1.png`}
+              src={data?.logo_url || `/logo2.png`}
               alt="Company Logo" 
-              className="h-20 w-20"
+              className="h-14 w-14"
             />
-            <p className="text-2xl font-semibold text-white pt-2">{data?.name || "ImpactAcross"}</p>
+            <p className="text-2xl font-semibold text-white">{data?.name || "ImpactAcross"}</p>
             <p className="font-semibold w-60 lg:w-60">{data?.title || "If you have a Vision We will help you to turn it into reality."}</p>
           </div>
 
