@@ -23,9 +23,10 @@ export default function WhoWeAre() {
 
   return (
     <section id="about" className="scroll-mt-24 max-w-6xl mx-auto px-6 py-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"> */}
+      <div className="flex justify-between gap-12 items-center">
         {/* Text Section */}
-        <div className="space-y-6">
+        <div className="space-y-6 max-w-xl w-full">
           <h2 className="text-4xl font-semibold text-gray-600 leading-tight animate-fade-in">
             Who We Are
           </h2>
@@ -42,10 +43,11 @@ export default function WhoWeAre() {
 
         {/* Image Section */}
         <div className="relative group">
-          <div className="overflow-hidden rounded-3xl shadow-lg">
+          <div className="overflow-hidden rounded-3xl">
             <img
               src={data?.image_url || "/whoWeAre.png"}
               alt="Who We Are"
+              className="h-[60vh]"
             />
           </div>
         </div>
