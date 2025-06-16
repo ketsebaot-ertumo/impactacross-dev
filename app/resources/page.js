@@ -48,7 +48,8 @@ export default function ResourceGrid() {
         <Header/>
         <div className="relative">
             <img 
-                src="/home.jpg"
+                // src="/home.jpg"
+                src="https://res.cloudinary.com/dq6mvqivd/image/upload/v1750097915/ImpactAcross/images/photo_5944760772829759998_y_zwrgzh.jpg"
                 alt="Consultancy Services"
                 className="w-full h-90 object-cover"
             />

@@ -30,7 +30,7 @@ export default function MissionVisionObjective() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const {data} = await getAllData("admin/sections/values/value");
+        const {data} = await getAllData("sections/values/value");
         if (data) {
           setData(data);
         }

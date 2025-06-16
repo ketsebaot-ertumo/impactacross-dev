@@ -9,7 +9,7 @@ export default function WhoWeAre() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const {data} = await getLatestData("admin/who-we-are-contents");
+          const {data} = await getLatestData("who-we-are-contents");
           if (data) {
             setData(data);
           }

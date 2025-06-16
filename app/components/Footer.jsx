@@ -85,7 +85,7 @@ export default function Footer() {
               alt="Company Logo" 
               className="h-20 w-20"
             />
-            <p className="text-lg font-semibold text-blue-500 pt-2">{data?.name || "ImpactAcross"}</p>
+            <p className="text-2xl font-semibold text-white pt-2">{data?.name || "ImpactAcross"}</p>
             <p className="font-semibold w-60 lg:w-60">{data?.title || "If you have a Vision We will help you to turn it into reality."}</p>
           </div>
 
@@ -115,7 +115,7 @@ export default function Footer() {
               {/* Email */}
               {data?.email && (
                 <li className="flex items-center space-x-2">
-                  <Mail className="text-blue-600 w-5 h-5" />
+                  <Mail className="text-blue-400 w-5 h-5" />
                   <a href={`mailto:${data?.email}`} className="hover:underline">
                     {data?.email}
                   </a>

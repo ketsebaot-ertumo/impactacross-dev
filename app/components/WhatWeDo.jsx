@@ -32,7 +32,7 @@ export default function WhatWeDo() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const {data} = await getAllData("admin/what-we-do-images");
+        const {data} = await getAllData("what-we-do-images");
         if (data) {
           setSection(data?.[0].section)
           setData(data);

@@ -126,9 +126,9 @@ export default function Header() {
                 <Link
                   key={link.title}
                   href={link.path}
-                  className={`px-3 py-2 rounded-md transition-colors duration-200 hover:text-blue-600 text-xl ${
+                  className={`px-3 py-2 rounded-md transition-colors duration-200 hover:border text-xl ${
                     isActiveLink(link.path)
-                      ? 'text-blue-600 font-bold'
+                      ? 'border font-bold'
                       : 'text-gray-900'
                   }`}
                 >

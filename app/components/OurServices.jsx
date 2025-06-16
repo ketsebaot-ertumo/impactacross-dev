@@ -85,7 +85,7 @@ export default function OurSectorialFocus() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const {data: res} = await getAllData("admin/sections/values/service");
+          const {data: res} = await getAllData("sections/values/service");
           const [data] = res;
           if (data) {
             setData(data);

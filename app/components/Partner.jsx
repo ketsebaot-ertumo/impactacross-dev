@@ -68,7 +68,7 @@ export default function Partners() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const {data: response} = await getAllData("admin/sections/values/partner");
+        const {data: response} = await getAllData("sections/values/partner");
         const [partnerData] = response;
         if (partnerData) {
             setPartners(partnerData);

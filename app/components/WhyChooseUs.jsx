@@ -10,7 +10,7 @@ export default function WhyChooseUs() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const {data} = await getAllData("admin/sections/values/why_choose_us");
+          const {data} = await getAllData("sections/values/why_choose_us");
           if (data) {
             const [newData] = data;
             setData(newData);

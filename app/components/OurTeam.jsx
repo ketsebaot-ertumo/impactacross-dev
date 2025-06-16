@@ -76,7 +76,7 @@ export default function OurTeam() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const {data: response} = await getAllData("admin/sections/values/team");
+        const {data: response} = await getAllData("sections/values/team");
         const [data] = response;
         if (data) {
           setData(data);

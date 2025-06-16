@@ -10,7 +10,7 @@ export default function OurExpertise() {
       useEffect(() => {
         const fetchData = async () => {
           try {
-            const {data} = await getAllData("admin/sections/values/expertise");
+            const {data} = await getAllData("sections/values/expertise");
             if (data) {
               const [newData] = data;
               setData(newData);

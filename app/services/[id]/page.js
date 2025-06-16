@@ -19,7 +19,7 @@ export default function ServiceDetailPage() {
   useEffect(() => {
     const fetchService = async () => {
       try {
-        const { data } = await getDataById("admin/services", id);
+        const { data } = await getDataById("services", id);
         setService(data);
       } catch (error) {
         console.error("Error fetching service by ID:", error);
@@ -115,7 +115,7 @@ export default function ServiceDetailPage() {
 //   useEffect(() => {
 //     const fetchService = async () => {
 //       try {
-//         const { data } = await getDataById("admin/services", id);
+//         const { data } = await getDataById("services", id);
 //         setService(data);
 //       } catch (error) {
 //         console.error("Error fetching service by ID:", error);

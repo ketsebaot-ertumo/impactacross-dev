@@ -51,7 +51,7 @@ export default function ProjectsAndPartners() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const {data: response} = await getAllData("admin/sections/values/project");
+        const {data: response} = await getAllData("sections/values/project");
         const [projectsData] = response;
         if (projectsData) {
           setProjects(projectsData);
