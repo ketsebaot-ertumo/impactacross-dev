@@ -87,7 +87,7 @@ export default function WhatWeDo() {
       <div className="max-w-6xl mx-auto text-center px-6 md:px-8">
         <h2 className="text-4xl font-bold">{section?.title || "What We Do"}</h2>
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
-        <p className="max-w-2xl mx-auto text-lg italic">
+        <p className="max-w-2xl mx-auto text-md sm:text-lg italic pt-4">
           {section?.description || "Our approach integrates research, strategy, and action to create meaningful and lasting impact."}
         </p>
       </div>
@@ -114,7 +114,7 @@ export default function WhatWeDo() {
                 }`}
               >
                 <h3 className="text-2xl font-semibold">{item.title}</h3>
-                <p className="mt-2 text-sm line-clamp-3">{item.description}</p>
+                <p className="mt-2 sm:mt-4 text-sm line-clamp-3">{item.description}</p>
               </div>
             </motion.div>
           ))}

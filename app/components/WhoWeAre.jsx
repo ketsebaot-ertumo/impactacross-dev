@@ -22,7 +22,7 @@ export default function WhoWeAre() {
     }, []);
 
   return (
-    <section id="about" className="scroll-mt-24 max-w-6xl mx-auto px-6 pt-6 sm:pt-20">
+    <section id="about" className="scroll-mt-24 max-w-6xl mx-auto px-6 pt-6 sm:pt-12">
       {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"> */}
       <div className="sm:flex justify-between gap-6 sm:gap-12 items-center space-y-2">
         {/* Text Section */}
