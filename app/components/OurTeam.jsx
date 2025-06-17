@@ -66,7 +66,7 @@ export default function OurTeam() {
   return (
     <section id='teams' className="scroll-mt-24 py-16 bg-gray-100 text-center">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-gray-800 mb-6">{data?.title || "Meet Our Team"}</h2>
+        <h2 className="text-4xl font-bold text-gray-600 mb-6">{data?.title || "Meet Our Team"}</h2>
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
         <p className="text-lg text-gray-600 mb-12 max-w-4xl mx-auto line-clamp-3 px-2">{data?.description || "ImpactAcross is powered by a passionate, diverse team dedicated to driving data-driven change across key development sectors. We combine local knowledge with global expertise to deliver innovative, impactful solutions grounded in integrity and partnership."}</p>
 
@@ -155,10 +155,10 @@ function InViewZoomCard({ member, isFounder }) {
         {member.position}
       </p>
       <div className="flex justify-center gap-3 mt-3" onClick={(e) => e.stopPropagation()}>
-        <Link href={member.linkedin} target="_blank">
+        <Link href={member.linkedin}>
           <FaLinkedin className="text-blue-600 text-xl hover:text-blue-800" />
         </Link>
-        <Link href={member.facebook} target="_blank">
+        <Link href={member.facebook}>
           <FaFacebook className="text-blue-500 text-xl hover:text-blue-700" />
         </Link>
       </div>
