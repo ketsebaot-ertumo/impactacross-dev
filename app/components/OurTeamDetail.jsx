@@ -6,8 +6,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { FaLinkedin, FaTwitter } from "react-icons/fa";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Email } from "@mui/icons-material";
+import { getDataById } from "../lib/routes";
 
 const teamMembers = [
   {
@@ -74,15 +75,31 @@ const teamMembers = [
   },
 ];
 
-export default function OurTeamDetail() {
-  const { id } = useParams();
-  const member = teamMembers.find((member) => member.id === parseInt(id));
+export default function OurTeamDetail({id}) {
+   const [member, setMember] = useState({});
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const { data: response } = await getDataById("teams", id);
+          console.log("\ndata:", response)
+          setMember(response)
+        } catch(error) {
+          console.error("error occur on getting data:", error);
+        }
+      };
+      fetchData();
+    }, []);
 
-  useEffect(() => {
-    if (!member) notFound();
-  }, [member]);
+  // useEffect(() => {
+  //   if (!member) notFound();
+  // }, [member]);
 
-  if (!member) return notFound();
+  if (!member) 
+  return(
+    <>
+      <div className="h-[60vh] text-center font-semibold">No Data Found!</div>
+    </>  );
   
   return (
     <motion.section
@@ -93,8 +110,8 @@ export default function OurTeamDetail() {
     >
       <div className="grid md:grid-cols-2 gap-10 items-center">
         <Image
-          src={member.image || member.image_url}
-          alt={member.name}
+          src={member?.image_url}
+          alt={member?.name || "ImapctAcross Team"}
           width={400}
           height={400}
           className="rounded-3xl shadow-xl object-cover"

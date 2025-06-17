@@ -114,7 +114,7 @@ export default function MissionVisionObjective() {
                   >
                     <div className="">
                       <h2 className="text-2xl font-bold mb-4">{item.title}</h2>
-                      <p className="text-sm line-clamp-5 italic" dangerouslySetInnerHTML={{ __html: item.description }}/>
+                      <p className="text-sm line-clamp-6" dangerouslySetInnerHTML={{ __html: item.description }}/>
                     </div>
                   </motion.div>
                 ))}

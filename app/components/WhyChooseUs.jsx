@@ -39,7 +39,7 @@ export default function WhyChooseUs() {
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
         
         <motion.p
-          className="text-center text-md mt-4 md:leading-relaxed max-w-6xl mx-auto line-clamp-3 sm:line-clamp-4"
+          className="text-center text-md sm:text-lg mt-4 md:leading-relaxed max-w-6xl mx-auto"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}

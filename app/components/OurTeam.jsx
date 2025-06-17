@@ -68,11 +68,11 @@ export default function OurTeam() {
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-gray-600 mb-6">{data?.title || "Meet Our Team"}</h2>
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
-        <p className="text-lg text-gray-600 mb-12 max-w-4xl mx-auto line-clamp-3 px-2 italic">{data?.description || "ImpactAcross is powered by a passionate, diverse team dedicated to driving data-driven change across key development sectors. We combine local knowledge with global expertise to deliver innovative, impactful solutions grounded in integrity and partnership."}</p>
+        <p className="text-lg text-gray-600 mb-12 max-w-4xl mx-auto px-2 italic">{data?.description || "ImpactAcross is powered by a passionate, diverse team dedicated to driving data-driven change across key development sectors. We combine local knowledge with global expertise to deliver innovative, impactful solutions grounded in integrity and partnership."}</p>
 
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto no-scrollbar px-4 scroll-smooth items-center"
+          className="flex gap-6 overflow-x-auto no-scrollbar px-4 scroll-smooth items-center pt-2"
         >
           {data?.teams?.map((member, index) => (
             <Link 

@@ -27,10 +27,10 @@ export default function OurSectorialFocus() {
   return (
     <section id="services" className="scroll-mt-24 bg-gray-100 py-16 text-gray-800">
       <div className="max-w-6xl mx-auto px-4 md:px-8">
-        <h2 className="text-4xl font-bold text-center line-clamp-4">{data?.title}</h2>
+        <h2 className="text-4xl font-bold text-center line-clamp-4">{data?.title || "Our Services"}</h2>
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
-        <p className="text-center max-w-3xl mx-auto text-lg italic">
-          {data?.description}
+        <p className="text-center max-w-3xl mx-auto text-md sm:text-lg italic">
+          {data?.description || "At ImpactAcross, we provide end-to-end research, strategy, and advisory services tailored to accelerate sustainable development across Africa."}
         </p>
 
         {/* Horizontal scroll on mobile/tablet */}
@@ -80,9 +80,9 @@ export default function OurSectorialFocus() {
                 <img
                   src={item.image_url || item.image || fallbackImage}
                   alt={item.title}
-                  className="w-20 h-20 rounded-lg object-cover"
+                  className="w-20 h-20 rounded-lg object-cover transition rounded-xl hover:scale-108 duration-300"
                 />
-                <h3 className="text-lg font-semibold">{item.title}</h3>
+                <h3 className="text-lg font-semibold object-contain transition rounded-xl hover:scale-108 duration-300">{item.title}</h3>
               </div>
 
               <AnimatePresence>

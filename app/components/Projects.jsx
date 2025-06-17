@@ -14,8 +14,6 @@ export default function ProjectsAndPartners() {
     projects: []
   });
 
-  const logos = ['/p1.png', '/p2.png', '/p3.png', '/p4.png', '/p5.png', '/p9.png', '/p7.png', '/p8.png', '/p6.png'];
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,15 +29,37 @@ export default function ProjectsAndPartners() {
   }, []);
 
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <section id='projects' className="scroll-mt-24 bg-gray-900 text-white">
       <div className="max-w-6xl mx-auto py-16 px-6 lg:px-0">
         <h2 className="text-4xl font-bold text-center mb-4 sm:mb-8">{projectsData.title}</h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
-        <p className="text-gray-400 text-center max-w-4xl mx-auto italic my-8 sm:mb-12 line-clamp-3 italic">
-          {projectsData.description}
-        </p>
+        <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 mb-6 rounded" />
+        <div className="mb-6 hidden md:flex pt-2 max-w-4xl mx-auto text-center py-4">
+            <i>
+             {projectsData?.description || `With our deep industry expertise, multi-disciplinary capabilities and rigorous analysis,
+              we deliver high-quality technical studies, evaluations, and project design services.`}
+            </i>
+          </div>
+        {/* <div className="hidden sm:flex text-center max-w-4xl mx-auto my-8 sm:mb-12">
+          <p
+            className={`text-gray-400 italic transition-all duration-300 ${
+              expanded ? '' : 'line-clamp-3 sm:line-clamp-none'
+            }`}
+          >
+            {projectsData?.description || "At ImpactAcross, we are actively engaged in a range of projects that drive sustainable development and climate resilience across Africa. Our work is strengthened through strategic partnerships with local, regional, and international organizations, allowing us to amplify our impact and foster collaboration."}
+          </p>
+
+          {projectsData?.description && projectsData?.description?.length > 120 && (
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="mt-2 text-green-800 hover:underline text-sm font-medium"
+            >
+              {expanded ? 'Show less' : 'See more'}
+            </button>
+          )}
+        </div> */}
 
         {/* Timeline-style Projects */}
         <div className="space-y-8">
@@ -56,7 +76,7 @@ export default function ProjectsAndPartners() {
                 className="w-full text-left focus:outline-none"
               >
                 <div className="flex justify-between items-center space-x-1">
-                  <h3 className="text-xl font-semibold text-white line-clamp-2">{project.title}</h3>
+                  <h3 className="text:lg sm:text-xl font-semibold text-white">{project.title}</h3>
                   {openIndex === i ? <ChevronUp /> : <ChevronDown />}
                 </div>
               </button>
@@ -73,7 +93,7 @@ export default function ProjectsAndPartners() {
                     <div className="flex items-center text-sm mb-1 gap-3">
                       {project?.client && (
                         <span className="flex items-center gap-1 text-green-800">
-                          <User size={14} /> <span className='line-clamp-1'>{project.client}</span>
+                          <User size={14} /> {project.client}
                         </span>
                       )}
                       {project?.date && (
@@ -82,7 +102,7 @@ export default function ProjectsAndPartners() {
                         </span>
                       )}
                     </div>
-                    <p className="mt-1 line-clamp-2">{project.description}</p>
+                    <p>{project.description}</p>
                   </motion.div>
                 )}
               </AnimatePresence>

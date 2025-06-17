@@ -31,10 +31,10 @@ export default function WhoWeAre() {
             Who We Are
           </h2>
           <div className="w-26 h-1 bg-gradient-to-r from-primary to-green-800 my-4 rounded" />
-          <p className="text-gray-700 leading-relaxed text-lg animate-fade-in delay-200 line-clamp-3 sm:line-clamp-4">
+          <p className="text-gray-700 leading-relaxed text-lg animate-fade-in delay-200">
             {data?.description1 || `ImpactAcross Development Research and Consultancy PLC is an Ethiopia-based firm (with a liaison office in Cape Town, South Africa) committed to helping governments, donors, and development organizations drive sustainable progress across Africa.`}
           </p>
-          <p className="text-gray-700 leading-relaxed text-lg animate-fade-in delay-200 line-clamp-3 sm:line-clamp-4">
+          <p className="text-gray-700 leading-relaxed text-lg animate-fade-in delay-200">
             {data?.description2 || `At ImpactAcross, our name reflects our mission—to generate meaningful, data-driven change across sectors, stakeholders, and geographies. We deliver evidence-based insights, strategic solutions, and expert guidance to address today’s most pressing development challenges.`}
           </p>
         </div>
