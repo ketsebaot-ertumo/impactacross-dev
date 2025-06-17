@@ -91,7 +91,7 @@ export default function PublicationDetail() {
                           href={post?.fileURL}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-2 bg-gradient-to-tr from-blue-300 to-blue-500 hover:from-blue-600 hover:to-blue-300 text-white px-6 py-3 rounded-full text-base font-medium shadow-lg transition-all duration-200 hover:scale-105"
+                          className="inline-flex items-center justify-center gap-2 bg-gradient-to-tr from-green-300 to-green-500 hover:from-green-600 hover:to-green-300 text-white px-6 py-3 rounded-full text-base font-medium shadow-lg transition-all duration-200 hover:scale-105"
                         >
                           <Download className="w-5 h-5" />
                             Download PDF

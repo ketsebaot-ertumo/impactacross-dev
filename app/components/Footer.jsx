@@ -115,7 +115,7 @@ export default function Footer() {
               {/* Email */}
               {data?.email && (
                 <li className="flex items-center space-x-2">
-                  <Mail className="text-blue-400 w-5 h-5" />
+                  <Mail className="text-green-400 w-5 h-5" />
                   <a href={`mailto:${data?.email}`} className="hover:underline">
                     {data?.email}
                   </a>
@@ -138,9 +138,9 @@ export default function Footer() {
           {/* <div>
             <h3 className="text-lg font-semibold text-white mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-                <a href="https://facebook.com/" className="hover:text-blue-600"><Facebook /></a>
+                <a href="https://facebook.com/" className="hover:text-green-600"><Facebook /></a>
                 <a href="https://twitter.com/" className="hover:text-sky-500"><Twitter /></a>
-                <a href="https://www.linkedin.com/" className="hover:text-blue-600"><LinkedIn /></a>
+                <a href="https://www.linkedin.com/" className="hover:text-green-600"><LinkedIn /></a>
                 <a href="https://www.instagram.com/" className="hover:text-pink-500"><Instagram /></a>
             </div>
           </div> */}

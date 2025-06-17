@@ -91,7 +91,7 @@ export default function Partners() {
             <div className="relative flex items-center justify-center py-4">
               <div className="w-32 border-t-2 border-gray-300"></div>
             </div>
-            <p className="hidden md:flex text-lg text-center max-w-3xl mx-auto">
+            <p className="text-lg text-center max-w-4xl mx-auto line-clamp-2 my-6 sm:my-2">
               <i>
                 {partners?.description || `With our deep industry expertise, multi-disciplinary capabilities and rigorous analysis,
                 we deliver high-quality technical studies, evaluations, and project design services.`}
@@ -99,7 +99,7 @@ export default function Partners() {
             </p>
 
             {/* Partner Logos */}
-            <div className="flex flex-wrap justify-center gap-6 items-center pt-6 md:pt-12">
+            <div className="flex overflow-x-auto justify-center gap-6 items-center pt-6 md:pt-12">
               {partners?.partners && partners?.partners.map((src, index) => (
                 <img
                   key={index}

@@ -84,11 +84,11 @@ export default function Publications() {
 
                                         {/* Content */}
                                         <div className="p-5 space-y-3">
-                                        <h3 className="line-clamp-2 text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                        <h3 className="line-clamp-2 text-xl font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
                                             {item.title}
                                         </h3>
                                         <p className="text-gray-600 text-sm line-clamp-3">{item.content}</p>
-                                        <div className="inline-block italic text-blue-600 text-sm font-medium mt-3 transition-all duration-300 hover:underline hover:text-blue-800 hover:pl-1">
+                                        <div className="inline-block italic text-green-600 text-sm font-medium mt-3 transition-all duration-300 hover:underline hover:text-green-800 hover:pl-1">
                                             Read more &gt;&gt;
                                         </div>
                                         </div>
@@ -106,7 +106,7 @@ export default function Publications() {
                                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                                 currentPage === 1
                                     ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                                    : "bg-blue-400 text-white hover:bg-blue-500"
+                                    : "bg-green-400 text-white hover:bg-green-500"
                                 }`}
                             >
                                 ← Previous
@@ -123,7 +123,7 @@ export default function Publications() {
                                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                                 currentPage === totalPages
                                     ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                                        : "bg-blue-600 text-white hover:bg-blue-700"
+                                        : "bg-green-600 text-white hover:bg-green-700"
                                 }`}
                             >
                                 Next →

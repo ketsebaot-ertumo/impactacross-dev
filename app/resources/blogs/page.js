@@ -83,15 +83,15 @@ export default function Blogs() {
                                     </div>
 
                                     <div className="md:w-1/2 w-full mt-8 md:mt-0 md:px-12 text-center md:text-left">
-                                        <h2 className="line-clamp-2 text-4xl font-bold text-gray-800 mb-4 group-hover:text-blue-600 transition-colors">
+                                        <h2 className="line-clamp-2 text-4xl font-bold text-gray-800 mb-4 group-hover:text-green-600 transition-colors">
                                             {blog.title}
                                         </h2>
                                         <p className="text-gray-800 text-lg line-clamp-3">{blog.content}</p>
-                                        <div className="inline-block italic text-blue-600 text-sm font-medium mt-3 transition-all duration-300 hover:underline hover:text-blue-800 hover:pl-1">
+                                        <div className="inline-block italic text-green-600 text-sm font-medium mt-3 transition-all duration-300 hover:underline hover:text-green-800 hover:pl-1">
                                             Read more &gt;&gt;
                                         </div>
                                         <div className="mt-6">
-                                            <span className="inline-block bg-blue-100 text-blue-600 px-4 py-1 rounded-full text-sm">
+                                            <span className="inline-block bg-green-100 text-green-600 px-4 py-1 rounded-full text-sm">
                                                 {new Date(blog.publishedAt).toLocaleDateString("en-US", {
                                                     year: "numeric", month: "long", day: "numeric",
                                                 })}
@@ -111,7 +111,7 @@ export default function Blogs() {
                                         className={`px-4 py-2 rounded-md font-medium transition ${
                                         currentPage === 1
                                             ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                                            : "bg-blue-600 text-white hover:bg-blue-700"
+                                            : "bg-green-600 text-white hover:bg-green-700"
                                         }`}
                                     >
                                         Previous
@@ -127,7 +127,7 @@ export default function Blogs() {
                                         className={`px-4 py-2 rounded-md font-medium transition ${
                                         currentPage === totalPages
                                             ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                                            : "bg-blue-600 text-white hover:bg-blue-700"
+                                            : "bg-green-600 text-white hover:bg-green-700"
                                         }`}
                                     >
                                         Next
@@ -145,7 +145,7 @@ export default function Blogs() {
                                         setPageSize(Number(e.target.value));
                                         setCurrentPage(1);
                                     }}
-                                        className="border border-gray-300 rounded px-3 py-1 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        className="border border-gray-300 rounded px-3 py-1 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-green-500"
                                 >
                                     {[2, 5, 10, 25].map((size) => (
                                     <option key={size} value={size}>

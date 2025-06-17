@@ -93,7 +93,7 @@ export default function OurTeamDetail() {
     >
       <div className="grid md:grid-cols-2 gap-10 items-center">
         <Image
-          src={member.image}
+          src={member.image || member.image_url}
           alt={member.name}
           width={400}
           height={400}
@@ -177,7 +177,7 @@ export default function OurTeamDetail() {
   //                 href={member?.linkedin}
   //                 target="_blank"
   //                 rel="noopener noreferrer"
-  //                 className="hover:text-blue-700 transition"
+  //                 className="hover:text-green-700 transition"
   //               >
   //                 <FaLinkedin size={24} />
   //               </Link>

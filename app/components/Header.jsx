@@ -88,6 +88,7 @@ export default function Header() {
     { title: "Home", path: "/" },
     { title: "About", path: "#about" },
     { title: "Services", path: "#services" },
+    { title: "Teams", path: "#teams" },
     { title: "Resources", path: "/resources" },
     { title: "Contact", path: "/contact" },
   ];
@@ -155,9 +156,9 @@ export default function Header() {
                 key={link.title}
                 component={Link}
                 href={link.path}
-                className={`transition-colors duration-200 hover:text-blue-600 ${
+                className={`transition-colors duration-200 hover:text-green-600 ${
                   isActiveLink(link.path)
-                    ? 'text-blue-600 font-bold'
+                    ? 'text-green-600 font-bold'
                     : 'text-gray-900'
                 }`}
               >

@@ -85,11 +85,11 @@
 
 //                                         {/* Content */}
 //                                         <div className="p-5 space-y-3">
-//                                         <h3 className="line-clamp-2 text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+//                                         <h3 className="line-clamp-2 text-xl font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
 //                                             {item.title}
 //                                         </h3>
 //                                         <p className="text-gray-600 text-sm line-clamp-3">{item.content}</p>
-//                                         <div className="inline-block italic text-blue-600 text-sm font-medium mt-3 transition-all duration-300 hover:underline hover:text-blue-800 hover:pl-1">
+//                                         <div className="inline-block italic text-green-600 text-sm font-medium mt-3 transition-all duration-300 hover:underline hover:text-green-800 hover:pl-1">
 //                                             Read more &gt;&gt;
 //                                         </div>
 //                                         </div>
@@ -107,7 +107,7 @@
 //                                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
 //                                     currentPage === 1
 //                                         ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-//                                         : "bg-blue-600 text-white hover:bg-blue-700"
+//                                         : "bg-green-600 text-white hover:bg-green-700"
 //                                     }`}
 //                                 >
 //                                     ← Previous
@@ -124,7 +124,7 @@
 //                                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
 //                                     currentPage === totalPages
 //                                         ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-//                                         : "bg-blue-600 text-white hover:bg-blue-700"
+//                                         : "bg-green-600 text-white hover:bg-green-700"
 //                                     }`}
 //                                 >
 //                                     Next →
@@ -143,7 +143,7 @@
 //                                     setPageSize(Number(e.target.value));
 //                                     setCurrentPage(1);
 //                                     }}
-//                                     className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+//                                     className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-green-500"
 //                                 >
 //                                     {[3, 5, 10, 25].map((size) => (
 //                                     <option key={size} value={size}>
@@ -235,13 +235,13 @@ export default function Trainings() {
                             fill
                             className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                             />
-                            <span className="absolute top-3 right-3 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                            <span className="absolute top-3 right-3 bg-green-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
                             {item.trainingType}
                             </span>
                         </div>
 
                         <div className="p-5">
-                            <h3 className="line-clamp-1 text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600">
+                            <h3 className="line-clamp-1 text-lg font-semibold text-gray-900 mb-2 group-hover:text-green-600">
                             {item.title}
                             </h3>
                             <p className="text-sm text-gray-600 line-clamp-3">{item.content}</p>
@@ -259,7 +259,7 @@ export default function Trainings() {
                             <span>{item.durationHours || "?"} hrs</span>
                             </div>
 
-                            <div className="inline-block italic text-blue-600 text-sm font-medium mt-3 transition-all duration-300 hover:underline hover:text-blue-800 hover:pl-1">
+                            <div className="inline-block italic text-green-600 text-sm font-medium mt-3 transition-all duration-300 hover:underline hover:text-green-800 hover:pl-1">
                                 Read more &gt;&gt;
                             </div>
                         </div>
@@ -277,7 +277,7 @@ export default function Trainings() {
                             className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
                             currentPage === 1
                                 ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                                : "bg-blue-600 text-white hover:bg-blue-700"
+                                : "bg-green-600 text-white hover:bg-green-700"
                             }`}
                         >
                             ← Previous
@@ -293,7 +293,7 @@ export default function Trainings() {
                             className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
                             currentPage === totalPages
                                 ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                                : "bg-blue-800 text-white hover:bg-blue-500"
+                                : "bg-green-800 text-white hover:bg-green-500"
                             }`}
                         >
                             Next →

@@ -3,31 +3,32 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { getAllData } from "../lib/routes";
+import Loader from "./Loader";
 
 const ITEMS_PER_PAGE = 3;
 
-const defaultData = [
-  {
-    image: "/home2.jpg",
-    title: "Analysis",
-    description: "We conduct rigorous research and assessments to generate evidence that illuminates the interconnected challenges across sectors like health, environment, climate change, and development.",
-  },
-  {
-    image: "/home2.jpg",
-    title: "Strategy",
-    description: "Our strategies are crafted to be forward-thinking, innovative, and actionable, ensuring they are adaptable to changing needs while driving long-term impact.",
-  },
-  {
-    image: "/home2.jpg",
-    title: "Action",
-    description: "We translate strategies into impactful, on-the-ground initiatives, ensuring communities and institutions are empowered to drive sustainable, lasting change.",
-  },
-];
+// const defaultData = [
+//   {
+//     image: "/home2.jpg",
+//     title: "Analysis",
+//     description: "We conduct rigorous research and assessments to generate evidence that illuminates the interconnected challenges across sectors like health, environment, climate change, and development.",
+//   },
+//   {
+//     image: "/home2.jpg",
+//     title: "Strategy",
+//     description: "Our strategies are crafted to be forward-thinking, innovative, and actionable, ensuring they are adaptable to changing needs while driving long-term impact.",
+//   },
+//   {
+//     image: "/home2.jpg",
+//     title: "Action",
+//     description: "We translate strategies into impactful, on-the-ground initiatives, ensuring communities and institutions are empowered to drive sustainable, lasting change.",
+//   },
+// ];
 
 export default function WhatWeDo() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [activePage, setActivePage] = useState(0);
-  const [data, setData] = useState(defaultData);
+  const [data, setData] = useState([]);
   const [section, setSection] = useState({});
   const scrollRef = useRef(null);
 
@@ -46,6 +47,8 @@ export default function WhatWeDo() {
 
     fetchData();
   }, []);
+
+  if(!data) return <Loader className="text-black" />
 
   const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
   const paginatedData = data.slice(
@@ -111,7 +114,7 @@ export default function WhatWeDo() {
                 }`}
               >
                 <h3 className="text-2xl font-semibold">{item.title}</h3>
-                <p className="mt-2 text-sm">{item.description}</p>
+                <p className="mt-2 text-sm line-clamp-3">{item.description}</p>
               </div>
             </motion.div>
           ))}
@@ -152,7 +155,7 @@ export default function WhatWeDo() {
                 className="w-full h-40 object-cover rounded-lg"
               />
               <h3 className="text-xl font-semibold mt-4">{item.title}</h3>
-              <p className="text-sm mt-2">{item.description}</p>
+              <p className="text-sm mt-4 line-clamp-3">{item.description}</p>
             </motion.div>
           ))}
         </div>
@@ -164,7 +167,7 @@ export default function WhatWeDo() {
               key={index}
               onClick={() => scrollToIndex(index)}
               className={`w-3 h-3 rounded-full ${
-                activePage === index ? "bg-primary" : "bg-gray-300"
+                activePage === index ? "bg-gray-200" : "bg-gray-300"
               }`}
             ></button>
           ))}
@@ -330,7 +333,7 @@ export default function WhatWeDo() {
 //               <button
 //                 key={index}
 //                 className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-//                   activeIndex === index ? "bg-blue-500" : "bg-gray-500"
+//                   activeIndex === index ? "bg-green-500" : "bg-gray-500"
 //                 }`}
 //                 onClick={() => scrollToIndex(index)}
 //               ></button>

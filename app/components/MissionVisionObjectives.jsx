@@ -77,11 +77,11 @@ export default function MissionVisionObjective() {
                 animate={{ x: 0, opacity: 1 }} // Slide in to center
                 exit={{ x: -100, opacity: 0 }} // Slide out to left
                 transition={{ duration: 0.5 }} // Smooth transition
-                className="absolute w-full h-full bg-white shadow-lg rounded-3xl p-6 text-center flex flex-col justify-center items-center"
+                className="absolute w-full h-full bg-white shadow-sm rounded-3xl p-6 text-center flex flex-col justify-center items-center"
               >
                 <h2 className="text-xl font-bold mb-4">{data[activeIndex].title}</h2>
                 {/* <p className="text-sm">{data[activeIndex].description}</p> */}
-                <p className="text-sm" dangerouslySetInnerHTML={{ __html: data[activeIndex].description }} />
+                <p className="text-sm line-clamp-5" dangerouslySetInnerHTML={{ __html: data[activeIndex].description }} />
 
               </motion.div>
             </AnimatePresence>
@@ -100,7 +100,7 @@ export default function MissionVisionObjective() {
                   >
                     <div className="">
                       <h2 className="text-2xl font-bold mb-4">{item.title}</h2>
-                      <p className="text-sm" dangerouslySetInnerHTML={{ __html: item.description }}/>
+                      <p className="text-sm line-clamp-5" dangerouslySetInnerHTML={{ __html: item.description }}/>
                     </div>
                   </motion.div>
                 ))
@@ -115,7 +115,7 @@ export default function MissionVisionObjective() {
                   >
                     <div className="">
                       <h2 className="text-2xl font-bold mb-4">{item.title}</h2>
-                      <p className="text-sm" dangerouslySetInnerHTML={{ __html: item.description }}/>
+                      <p className="text-sm line-clamp-5" dangerouslySetInnerHTML={{ __html: item.description }}/>
                     </div>
                   </motion.div>
                 ))}

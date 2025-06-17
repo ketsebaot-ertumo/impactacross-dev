@@ -55,7 +55,7 @@ export default function ServiceDetailPage() {
         <div className="max-w-6xl mx-auto w-full">
           <Link
             href="/#services"
-            className="text-blue-600 text-sm hover:underline mb-8 inline-block"
+            className="text-green-600 text-sm hover:underline mb-8 inline-block"
           >
             ← Back to Services
           </Link>
@@ -144,7 +144,7 @@ export default function ServiceDetailPage() {
 
 //         <section className="min-h-screen bg-white text-gray-800 px-4 py-12 md:py-20">
 //         <div className="max-w-6xl mx-auto">
-//             <Link href="/#services" className="text-blue-600 text-sm hover:underline mb-6 inline-block">
+//             <Link href="/#services" className="text-green-600 text-sm hover:underline mb-6 inline-block">
 //             ← Back to Services
 //             </Link>
 

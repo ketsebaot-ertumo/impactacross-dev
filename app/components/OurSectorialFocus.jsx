@@ -91,7 +91,7 @@ export default function OurSectorialFocus() {
                     ? item.description
                     : `${item.description.substring(0, 100)}... `}
                   <button
-                    className="text-blue-600 hover:underline"
+                    className="text-green-600 hover:underline"
                     onClick={() => toggleExpand(item.id)}
                   >
                     {expanded[item.id] ? "See Less" : "See More"}

@@ -23,10 +23,10 @@ const ResourceCard = ({ id, name, imageURL, mediaURL, title, content }) => {
 
       {/* Text Content */}
       <div className="flex flex-col justify-between w-full md:w-2/3 p-6">
-        <h3 className="text-2xl font-bold text-blue-600 transition-colors mb-4 line-clamp-1">
+        <h3 className="text-2xl font-bold text-green-600 transition-colors mb-4 line-clamp-1">
           {Name}
         </h3>
-        <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors mb-4 line-clamp-1">
+        <h3 className="text-xl font-bold text-gray-800 group-hover:text-green-600 transition-colors mb-4 line-clamp-1">
           {title}
         </h3>
         <p className="text-base text-gray-600 leading-relaxed line-clamp-2">

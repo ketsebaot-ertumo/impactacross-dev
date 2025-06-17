@@ -22,22 +22,19 @@ export default function WhoWeAre() {
     }, []);
 
   return (
-    <section id="about" className="scroll-mt-24 max-w-6xl mx-auto px-6 py-20">
+    <section id="about" className="scroll-mt-24 max-w-6xl mx-auto px-6 pt-6 sm:pt-20">
       {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"> */}
-      <div className="flex justify-between gap-12 items-center">
+      <div className="sm:flex justify-between gap-6 sm:gap-12 items-center space-y-2">
         {/* Text Section */}
         <div className="space-y-6 max-w-xl w-full">
           <h2 className="text-4xl font-semibold text-gray-600 leading-tight animate-fade-in">
             Who We Are
           </h2>
-          <p className="text-gray-700 leading-relaxed text-lg animate-fade-in delay-200">
-            {data?.description1 || `Abbabor Development Consult (ADC) is an Ethiopia-based consulting firm dedicated to 
-            providing research solutions that empower governments and development organizations in achieving social and 
-            economic progress.`} <br /><br />
-            {data?.description2 || `Our expertise lies in designing, monitoring, and evaluating strategies aligned with 
-            local and global development objectives. Through evidence-based policy and rigorous 
-            research, we strive to create meaningful impact and sustainable solutions for Africa&apos;s 
-            future.`}
+          <p className="text-gray-700 leading-relaxed text-lg animate-fade-in delay-200 line-clamp-3 sm:line-clamp-4">
+            {data?.description1 || `ImpactAcross Development Research and Consultancy PLC is an Ethiopia-based firm (with a liaison office in Cape Town, South Africa) committed to helping governments, donors, and development organizations drive sustainable progress across Africa.`}
+          </p>
+          <p className="text-gray-700 leading-relaxed text-lg animate-fade-in delay-200 line-clamp-3 sm:line-clamp-4">
+            {data?.description2 || `At ImpactAcross, our name reflects our mission—to generate meaningful, data-driven change across sectors, stakeholders, and geographies. We deliver evidence-based insights, strategic solutions, and expert guidance to address today’s most pressing development challenges.`}
           </p>
         </div>
 
@@ -45,9 +42,9 @@ export default function WhoWeAre() {
         <div className="relative group">
           <div className="overflow-hidden rounded-3xl">
             <img
-              src={data?.image_url || "/whoWeAre.png"}
+              src={data?.image_url || "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750087594/ImpactAcross/images/photo_5944760772829759238_x_s1jd7a.jpg"}
               alt="Who We Are"
-              className="h-[60vh]"
+              className="max-h-[60vh]"
             />
           </div>
         </div>

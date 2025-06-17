@@ -39,7 +39,7 @@ export default function WhyChooseUs() {
           <div className="w-32 border-t-2 border-gray-600"></div>
         </div>
         <motion.p
-          className="text-center text-lg mt-4 md:leading-relaxed max-w-4xl mx-auto"
+          className="text-center text-lg mt-4 md:leading-relaxed max-w-4xl mx-auto line-clamp-4 sm:line-clamp-5"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}
