@@ -37,7 +37,7 @@ export default function ProjectsAndPartners() {
       <div className="max-w-6xl mx-auto py-16 px-6 lg:px-0">
         <h2 className="text-4xl font-bold text-center mb-4 sm:mb-8">{projectsData.title}</h2>
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
-        <p className="text-gray-400 text-center max-w-4xl mx-auto italic my-8 sm:mb-12 line-clamp-3">
+        <p className="text-gray-400 text-center max-w-4xl mx-auto italic my-8 sm:mb-12 line-clamp-3 italic">
           {projectsData.description}
         </p>
 

@@ -131,7 +131,7 @@ export default function Form() {
       />
 
       <button
-        className="text-white hover:opacity-60 bg-green-600 opacity-60 py-2 px-20 rounded-lg"
+        className="text-white hover:opacity-60 bg-green-800 opacity-60 py-2 px-20 rounded-lg"
         type="submit"
       >
         Send

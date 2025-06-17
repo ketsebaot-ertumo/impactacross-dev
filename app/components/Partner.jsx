@@ -88,10 +88,8 @@ export default function Partners() {
         <div className="bg-gray-50 text-gray-600 py-12">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-4xl font-semibold text-center">{partners?.title || "Partners"}</h2>
-            <div className="relative flex items-center justify-center py-4">
-              <div className="w-32 border-t-2 border-gray-300"></div>
-            </div>
-            <p className="text-lg text-center max-w-4xl mx-auto line-clamp-2 my-6 sm:my-2">
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
+            <p className="text-lg text-center max-w-4xl mx-auto line-clamp-2 my-6 sm:my-2 italic">
               <i>
                 {partners?.description || `With our deep industry expertise, multi-disciplinary capabilities and rigorous analysis,
                 we deliver high-quality technical studies, evaluations, and project design services.`}

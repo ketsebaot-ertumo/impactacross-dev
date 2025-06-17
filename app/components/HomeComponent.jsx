@@ -39,7 +39,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-black opacity-40 w-full"></div>
           <div className="absolute inset-0 flex items-center justify-center px-4">
             <p className="text-white text-lg md:text-4xl font-bold text-center break-words max-w-[90%] md:max-w-[800px]">
-              { data?.description || "Improving lives by bridging the vital connections between health, environment, and development"}
+              { data?.description || "Informing Action. Inspiring Change. Impacting Futures."}
             </p>
           </div>
         </div>

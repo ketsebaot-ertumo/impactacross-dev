@@ -51,7 +51,7 @@ export default function ResourceGrid() {
                 // src="/home.jpg"
                 src="https://res.cloudinary.com/dq6mvqivd/image/upload/v1750097915/ImpactAcross/images/photo_5944760772829759998_y_zwrgzh.jpg"
                 alt="Consultancy Services"
-                className="w-full h-90 object-cover"
+                className="w-full h-60 sm:h-90 object-cover"
             />
             <div className="absolute inset-0 bg-black opacity-50 w-full"></div>
             <div className="absolute inset-0 flex items-center max-w-6xl mx-auto pl-8 lg:pl-0">

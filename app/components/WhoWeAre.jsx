@@ -30,6 +30,7 @@ export default function WhoWeAre() {
           <h2 className="text-4xl font-semibold text-gray-600 leading-tight animate-fade-in">
             Who We Are
           </h2>
+          <div className="w-26 h-1 bg-gradient-to-r from-primary to-green-800 my-4 rounded" />
           <p className="text-gray-700 leading-relaxed text-lg animate-fade-in delay-200 line-clamp-3 sm:line-clamp-4">
             {data?.description1 || `ImpactAcross Development Research and Consultancy PLC is an Ethiopia-based firm (with a liaison office in Cape Town, South Africa) committed to helping governments, donors, and development organizations drive sustainable progress across Africa.`}
           </p>

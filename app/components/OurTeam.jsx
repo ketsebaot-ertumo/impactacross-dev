@@ -68,7 +68,7 @@ export default function OurTeam() {
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-gray-600 mb-6">{data?.title || "Meet Our Team"}</h2>
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
-        <p className="text-lg text-gray-600 mb-12 max-w-4xl mx-auto line-clamp-3 px-2">{data?.description || "ImpactAcross is powered by a passionate, diverse team dedicated to driving data-driven change across key development sectors. We combine local knowledge with global expertise to deliver innovative, impactful solutions grounded in integrity and partnership."}</p>
+        <p className="text-lg text-gray-600 mb-12 max-w-4xl mx-auto line-clamp-3 px-2 italic">{data?.description || "ImpactAcross is powered by a passionate, diverse team dedicated to driving data-driven change across key development sectors. We combine local knowledge with global expertise to deliver innovative, impactful solutions grounded in integrity and partnership."}</p>
 
         <div
           ref={scrollRef}
@@ -79,6 +79,7 @@ export default function OurTeam() {
               href={`/team-detail/${member?.id}`} 
               key={index} 
               className="block"
+              // onClick={() => router.push(`/team-detail/${member?.id}`)}
             >
               <InViewZoomCard 
                 member={member} 
@@ -155,12 +156,12 @@ function InViewZoomCard({ member, isFounder }) {
         {member.position}
       </p>
       <div className="flex justify-center gap-3 mt-3" onClick={(e) => e.stopPropagation()}>
-        <Link href={member.linkedin}>
+        <span onClick={() => router.push(member.linkedin)}>
           <FaLinkedin className="text-blue-600 text-xl hover:text-blue-800" />
-        </Link>
-        <Link href={member.facebook}>
+        </span>
+        <span onClick={() => router.push(member.facebook)}>
           <FaFacebook className="text-blue-500 text-xl hover:text-blue-700" />
-        </Link>
+        </span>
       </div>
     </motion.div>
   );

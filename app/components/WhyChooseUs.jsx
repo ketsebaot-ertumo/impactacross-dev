@@ -35,11 +35,11 @@ export default function WhyChooseUs() {
         >
           {data?.title || "Why Choose Us"}
         </motion.h2>
-        <div className="relative flex items-center justify-center mb-8 pt-2">
-          <div className="w-32 border-t-2 border-gray-600"></div>
-        </div>
+        
+        <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
+        
         <motion.p
-          className="text-center text-lg mt-4 md:leading-relaxed max-w-4xl mx-auto line-clamp-4 sm:line-clamp-5"
+          className="text-center text-md mt-4 md:leading-relaxed max-w-6xl mx-auto line-clamp-3 sm:line-clamp-4"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}
