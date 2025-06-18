@@ -24,7 +24,7 @@ export const viewport = {
 export const metadata = {
   metadataBase: new URL("https://impactacross.com"),
   title: {
-    default: "ImpactAcross Development Research and Consultancy PLC",
+    default: "ImpactAcross",
     template: "%s | ImpactAcross"
   },
   description: "ImpactAcross is a dynamic development research and consultancy firm committed to transforming lives and systems across Africa. We specialize in delivering high-quality research, policy analysis, program design, monitoring & evaluation (M&E), capacity building, and strategic advisory services to NGOs, governments, development agencies, and the private sector.",
