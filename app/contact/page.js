@@ -64,9 +64,10 @@ export default function Contact() {
                 className="w-full h-60 sm:h-90 object-cover"
             />
             <div className="absolute inset-0 bg-black opacity-50 w-full"></div>
-            <div className="absolute inset-0 flex items-center max-w-6xl mx-auto pl-8 lg:pl-0">
-              <div className="text-white text-2xl md:text-4xl font-bold border-b pb-4">
+            <div className="absolute inset-0 flex items-center max-w-6xl mx-auto left-[8%] lg:left-[20%]">
+              <div className="text-white text-4xl md:text-5xl font-bold  pb-4 text-center">
                   Contact Us
+                  <p className="text-lg md:text-2xl pt-4">Let’s work together to create lasting impact!</p>
               </div>
             </div>
         </div>
@@ -81,8 +82,8 @@ export default function Contact() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               {/* LEFT: Contact Info */}
               <div className="space-y-6">
-                <h2 className="text-4xl font-bold text-gray-600">Get in Touch</h2>
-                <p className="text-md text-gray-600 line-clamp-3">
+                <h2 className="text-4xl font-bold text-gray-600">Get in touch with our team</h2>
+                <p className="text-lg text-gray-600 line-clamp-3">
                   We’d love to hear from you! Whether you’re interested in learning more about our services, exploring partnership opportunities, or have questions about your development projects, ImpactAcross is here to help.
                 </p>
 

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion, useAnimation } from 'framer-motion';
 import { FaLinkedin, FaFacebook } from 'react-icons/fa';
 import { getAllData } from '../lib/routes';
+import Loader from './Loader';
 
 const team = [
   {
@@ -70,6 +71,8 @@ export default function OurTeam() {
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
         <p className="text-lg text-gray-600 mb-12 max-w-4xl mx-auto px-2 italic">{data?.description || "ImpactAcross is powered by a passionate, diverse team dedicated to driving data-driven change across key development sectors. We combine local knowledge with global expertise to deliver innovative, impactful solutions grounded in integrity and partnership."}</p>
 
+        {!data?.teams && (<Loader className="h-12 text-green" />)}
+
         <div
           ref={scrollRef}
           className="flex gap-6 overflow-x-auto no-scrollbar px-4 scroll-smooth items-center pt-2"
@@ -109,7 +112,7 @@ function InViewZoomCard({ member, isFounder }) {
         } else {
           controls.start({ 
             scale: isFounder ? 1 : 0.9, 
-            opacity: isFounder ? 0.9 : 0.6 
+            opacity: isFounder ? 0.9 : 0.8
           });
         }
       },
@@ -131,7 +134,7 @@ function InViewZoomCard({ member, isFounder }) {
   return (
     <motion.div
       ref={cardRef}
-      initial={{ scale: isFounder ? 1 : 0.9, opacity: isFounder ? 0.9 : 0.6 }}
+      initial={{ scale: isFounder ? 1 : 0.9, opacity: isFounder ? 0.9 : 0.8 }}
       animate={controls}
       transition={{ duration: 0.5 }}
       className={`${isFounder ? 'min-w-[280px] max-w-[280px]' : 'min-w-[200px] max-w-[200px]'} 

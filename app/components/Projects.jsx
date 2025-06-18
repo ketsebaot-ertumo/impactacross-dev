@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getAllData } from '../lib/routes';
 import Partners from './Partner';
+import Loader from './Loader';
 
 export default function ProjectsAndPartners() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -34,32 +35,16 @@ export default function ProjectsAndPartners() {
   return (
     <section id='projects' className="scroll-mt-24 bg-gray-900 text-white">
       <div className="max-w-6xl mx-auto py-16 px-6 lg:px-0">
-        <h2 className="text-4xl font-bold text-center mb-4 sm:mb-8">{projectsData.title}</h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 mb-6 rounded" />
-        <div className="mb-6 hidden md:flex pt-2 max-w-4xl mx-auto text-center py-4">
-            <i>
-             {projectsData?.description || `With our deep industry expertise, multi-disciplinary capabilities and rigorous analysis,
-              we deliver high-quality technical studies, evaluations, and project design services.`}
-            </i>
-          </div>
-        {/* <div className="hidden sm:flex text-center max-w-4xl mx-auto my-8 sm:mb-12">
-          <p
-            className={`text-gray-400 italic transition-all duration-300 ${
-              expanded ? '' : 'line-clamp-3 sm:line-clamp-none'
-            }`}
-          >
-            {projectsData?.description || "At ImpactAcross, we are actively engaged in a range of projects that drive sustainable development and climate resilience across Africa. Our work is strengthened through strategic partnerships with local, regional, and international organizations, allowing us to amplify our impact and foster collaboration."}
-          </p>
-
-          {projectsData?.description && projectsData?.description?.length > 120 && (
-            <button
-              onClick={() => setExpanded(!expanded)}
-              className="mt-2 text-green-800 hover:underline text-sm font-medium"
-            >
-              {expanded ? 'Show less' : 'See more'}
-            </button>
-          )}
-        </div> */}
+        <h2 className="text-4xl font-semibold text-center mb-4 sm:mb-8">{projectsData.title}</h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 mb-8 rounded" />
+        <div className="mb-6 hidden md:flex pt-2 max-w-4xl mx-auto text-center py-4 text-lg">
+          <i>
+            {projectsData?.description || `With our deep industry expertise, multi-disciplinary capabilities and rigorous analysis,
+            we deliver high-quality technical studies, evaluations, and project design services.`}
+          </i>
+        </div>
+        
+        {!projectsData?.projects && (<Loader className="h-12 text-green" />)}
 
         {/* Timeline-style Projects */}
         <div className="space-y-8">

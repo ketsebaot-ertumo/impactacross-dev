@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getAllData } from "../lib/routes";
+import Loader from "./Loader";
 
 
 export default function OurSectorialFocus() {
@@ -29,7 +30,7 @@ export default function OurSectorialFocus() {
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         <h2 className="text-4xl font-bold text-center line-clamp-4">{data?.title || "Our Services"}</h2>
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
-        <p className="text-center max-w-3xl mx-auto text-md sm:text-lg italic">
+        <p className="text-center max-w-3xl mx-auto text-lg sm:text-lg italic">
           {data?.description || "At ImpactAcross, we provide end-to-end research, strategy, and advisory services tailored to accelerate sustainable development across Africa."}
         </p>
 
@@ -47,11 +48,11 @@ export default function OurSectorialFocus() {
                   alt={item.title}
                   className="w-full h-40 object-cover rounded-xl mb-4"
                 />
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="text-sm mt-2 line-clamp-4">{item.content}</p>
+                <h3 className="text-2xl font-semibold">{item.title}</h3>
+                <p className="text-lg mt-2 line-clamp-4">{item.content}</p>
                 <Link
-                  href={`/services/${item.slug}`}
-                  className="mt-3 inline-block text-sm text-primary hover:underline"
+                  href={`/services/${item?.id}`}
+                  className="mt-3 inline-block text-lg text-primary hover:underline italic"
                 >
                   Learn More →
                 </Link>
@@ -59,6 +60,8 @@ export default function OurSectorialFocus() {
             ))}
           </div>
         </div>
+
+        {!data?.services && (<Loader className="h-12 text-green" />)}
 
         {/* Grid + accordion on large screens */}
         <div className="hidden lg:grid grid-cols-2 gap-6 mt-10">
@@ -82,7 +85,10 @@ export default function OurSectorialFocus() {
                   alt={item.title}
                   className="w-20 h-20 rounded-lg object-cover transition rounded-xl hover:scale-108 duration-300"
                 />
-                <h3 className="text-lg font-semibold object-contain transition rounded-xl hover:scale-108 duration-300">{item.title}</h3>
+                <div className="">
+                  <h3 className="text-xl font-semibold object-contain transition rounded-xl hover:scale-108 duration-300 line-clamp-1">{item.title}</h3>
+                  {/* <p className="text-sm mt-2 line-clamp-2">{item.content}</p> */}
+                </div>
               </div>
 
               <AnimatePresence>

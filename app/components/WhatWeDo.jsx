@@ -7,24 +7,6 @@ import Loader from "./Loader";
 
 const ITEMS_PER_PAGE = 3;
 
-// const defaultData = [
-//   {
-//     image: "/home2.jpg",
-//     title: "Analysis",
-//     description: "We conduct rigorous research and assessments to generate evidence that illuminates the interconnected challenges across sectors like health, environment, climate change, and development.",
-//   },
-//   {
-//     image: "/home2.jpg",
-//     title: "Strategy",
-//     description: "Our strategies are crafted to be forward-thinking, innovative, and actionable, ensuring they are adaptable to changing needs while driving long-term impact.",
-//   },
-//   {
-//     image: "/home2.jpg",
-//     title: "Action",
-//     description: "We translate strategies into impactful, on-the-ground initiatives, ensuring communities and institutions are empowered to drive sustainable, lasting change.",
-//   },
-// ];
-
 export default function WhatWeDo() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [activePage, setActivePage] = useState(0);
@@ -48,7 +30,7 @@ export default function WhatWeDo() {
     fetchData();
   }, []);
 
-  if(!data) return <Loader className="text-black" />
+  // if(!data) return <Loader className="h-[60vh] text-center" />
 
   const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
   const paginatedData = data.slice(
@@ -87,10 +69,12 @@ export default function WhatWeDo() {
       <div className="max-w-6xl mx-auto text-center px-6 md:px-8">
         <h2 className="text-4xl font-bold">{section?.title || "What We Do"}</h2>
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
-        <p className="max-w-2xl mx-auto text-md sm:text-lg italic pt-4">
+        <p className="max-w-2xl mx-auto text-lg italic pt-4">
           {section?.description || "Our approach integrates research, strategy, and action to create meaningful and lasting impact."}
         </p>
       </div>
+
+      {!paginatedData && (<Loader className="h-12 text-green" />)}
 
       {/* Desktop: Grid with Pagination */}
       <div className="hidden lg:block max-w-6xl mx-auto mt-12 px-6">
@@ -114,7 +98,7 @@ export default function WhatWeDo() {
                 }`}
               >
                 <h3 className="text-2xl font-semibold">{item.title}</h3>
-                <p className="mt-2 sm:mt-4 text-sm line-clamp-3">{item.description}</p>
+                <p className="mt-2 sm:mt-4 text-sm">{item.description}</p>
               </div>
             </motion.div>
           ))}
@@ -154,8 +138,8 @@ export default function WhatWeDo() {
                 alt={item.title}
                 className="w-full h-40 object-cover rounded-lg"
               />
-              <h3 className="text-xl font-semibold mt-4">{item.title}</h3>
-              <p className="text-sm mt-4 line-clamp-3">{item.description}</p>
+              <h3 className="text-2xl font-semibold mt-4">{item.title}</h3>
+              <p className="text-base mt-4">{item.description}</p>
             </motion.div>
           ))}
         </div>

@@ -29,55 +29,55 @@ export default function Header() {
   }, []);
 
   
-  // useEffect(() => {
-  //   if (!data?.font_family) return;
+  useEffect(() => {
+    if (!data?.font_family) return;
   
-  //   const fontFamily = data.font_family;
-  //   const fontUrl = data.font_url; // optional
+    const fontFamily = data.font_family;
+    const fontUrl = data.font_url; // optional
   
-  //   // Clean up old dynamic fonts
-  //   const existingLink = document.getElementById("dynamic-font-link");
-  //   if (existingLink) existingLink.remove();
+    // Clean up old dynamic fonts
+    const existingLink = document.getElementById("dynamic-font-link");
+    if (existingLink) existingLink.remove();
   
-  //   // Helper: set CSS variable
-  //   const setFont = () => {
-  //     document.documentElement.style.setProperty('--dynamic-font-family', `'${fontFamily}', sans-serif`);
-  //   };
+    // Helper: set CSS variable
+    const setFont = () => {
+      document.documentElement.style.setProperty('--dynamic-font-family', `'${fontFamily}', sans-serif`);
+    };
   
-  //   // Case 1: Use Google Fonts if no custom URL
-  //   if (!fontUrl) {
-  //     console.log("new")
-  //     const googleFontName = fontFamily.replace(/ /g, '+');
-  //     const link = document.createElement("link");
-  //     link.id = "dynamic-font-link";
-  //     link.rel = "stylesheet";
-  //     link.href = `https://fonts.googleapis.com/css2?family=${googleFontName}:wght@400;500;600;700;800;900&display=swap`;
-  //     link.onload = setFont;
-  //     link.onerror = () => {
-  //       console.warn(`Google Font ${fontFamily} not found. Falling back to system font.`);
-  //       setFont(); // fallback to system-installed font
-  //     };
-  //     document.head.appendChild(link);
-  //   }
+    // Case 1: Use Google Fonts if no custom URL
+    if (!fontUrl) {
+      console.log("new")
+      const googleFontName = fontFamily.replace(/ /g, '+');
+      const link = document.createElement("link");
+      link.id = "dynamic-font-link";
+      link.rel = "stylesheet";
+      link.href = `https://fonts.googleapis.com/css2?family=${googleFontName}:wght@400;500;600;700;800;900&display=swap`;
+      link.onload = setFont;
+      link.onerror = () => {
+        console.warn(`Google Font ${fontFamily} not found. Falling back to system font.`);
+        setFont();
+      };
+      document.head.appendChild(link);
+    }
   
-  //   // Case 2: Use custom URL for @font-face
-  //   else {
-  //     console.log("else")
-  //     const font = new FontFace(fontFamily, `url(${fontUrl})`, {
-  //       weight: '700',
-  //       style: 'normal'
-  //     });
-  //     font.load()
-  //       .then((loadedFont) => {
-  //         document.fonts.add(loadedFont);
-  //         setFont();
-  //       })
-  //       .catch((err) => {
-  //         console.warn(`Custom font "${fontFamily}" failed to load:`, err);
-  //         setFont(); // fallback to system-installed font
-  //       });
-  //   }
-  // }, [data]);
+    // Case 2: Use custom URL for @font-face
+    else {
+      console.log("else")
+      const font = new FontFace(fontFamily, `url(${fontUrl})`, {
+        weight: '700',
+        style: 'normal'
+      });
+      font.load()
+        .then((loadedFont) => {
+          document.fonts.add(loadedFont);
+          setFont();
+        })
+        .catch((err) => {
+          console.warn(`Custom font "${fontFamily}" failed to load:`, err);
+          setFont(); // fallback to system-installed font
+        });
+    }
+  }, [data]);
   
 
   const handleDrawerToggle = () => {
@@ -86,16 +86,17 @@ export default function Header() {
 
   const navLinks = [
     { title: "Home", path: "/" },
-    { title: "About", path: "#about" },
-    { title: "Services", path: "#services" },
-    { title: "Teams", path: "#teams" },
+    { title: "About", path: "/#about" },
+    { title: "Services", path: "/#services" },
+    { title: "Teams", path: "/#teams" },
     { title: "Resources", path: "/resources" },
     { title: "Contact", path: "/contact" },
   ];
 
   const isActiveLink = (linkPath) => {
-    if (pathname.startsWith('/about')) return linkPath === '/about';
-    if (pathname.includes('/services')) return linkPath === '/services';
+    if (pathname.startsWith('/#about')) return linkPath === '/#about';
+    if (pathname.includes('/#services')) return linkPath === '/#services';
+    if (pathname.includes('/#teams')) return linkPath === '/#teams';
     if (pathname.includes('/resources')) return linkPath === '/resources';
     if (pathname.startsWith('/contact')) return linkPath === '/contact';
     return pathname === linkPath;
@@ -112,11 +113,11 @@ export default function Header() {
                   // src="/logo.png"
                   src={data?.logo_url || "/logo2.png"}
                   alt="Company Logo" 
-                  className="h-22 w-22"
+                  className="h-12 w-12 sm:h-22 sm:w-22"
                 />
               </Link>
               <div>
-                <h1 className="text-xl lg:text-3xl font-semibold">{data?.name || "ImpactAcross"}</h1>
+                <h1 className="text-3xl font-semibold">{data?.name || "ImpactAcross"}</h1>
                 <p className="text-[10px] font-semibold hidden md:block">{data?.title || "Development Research and Consultancy PLC"}</p>
               </div>
             </div>

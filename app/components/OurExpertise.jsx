@@ -71,8 +71,8 @@ export default function OurExpertise() {
         >
           <div
             ref={descriptionRef}
-            className={`text-gray-400 italic transition-all duration-300 ${
-              expanded ? '' : 'line-clamp-2'
+            className={`text-gray-400 italic transition-all duration-300 text-lg ${
+              expanded ? '' : 'line-clamp-4'
             }`}
           >
             {data?.description || "At ImpactAcross, we bring deep, multidisciplinary expertise to address complex development challenges across a range of critical sectors."}
@@ -81,7 +81,7 @@ export default function OurExpertise() {
           {needsExpand && (
             <button
               onClick={() => setExpanded(!expanded)}
-              className="mt-2 text-green-400 hover:text-green-300 hover:underline text-sm font-medium focus:outline-none"
+              className="mt-2 text-green-800 hover:text-green-600 hover:underline text-lg font-medium focus:outline-none italic"
               aria-expanded={expanded}
               aria-label={expanded ? 'Show less content' : 'Show more content'}
             >

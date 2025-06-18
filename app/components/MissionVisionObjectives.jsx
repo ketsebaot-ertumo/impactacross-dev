@@ -69,7 +69,7 @@ export default function MissionVisionObjective() {
   return (
       <div className="max-w-6xl mx-auto flex flex-wrap overflow-hidden justify-center items-center gap-6 text-gray-600 px-4 py-6 md:py-10">
         {isSmallScreen ? (
-          <div className="relative w-full max-w-xs h-56 overflow-hidden">
+          <div className="relative w-full max-w-base h-66 overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -79,8 +79,8 @@ export default function MissionVisionObjective() {
                 transition={{ duration: 0.5 }} // Smooth transition
                 className="absolute w-full h-full bg-white shadow-sm rounded-3xl p-6 text-center flex flex-col justify-center items-center"
               >
-                <h2 className="text-xl font-bold mb-4">{data[activeIndex].title}</h2>
-                <p className="text-sm line-clamp-3" dangerouslySetInnerHTML={{ __html: data[activeIndex].description }} />
+                <h2 className="text-3xl font-bold mb-4 line-clamp-1">{data[activeIndex].title}</h2>
+                <p className="text-lg line-clamp-7" dangerouslySetInnerHTML={{ __html: data[activeIndex].description }} />
 
               </motion.div>
             </AnimatePresence>
@@ -91,30 +91,30 @@ export default function MissionVisionObjective() {
               ? data.slice(0, 2).map((item, index) => ( // Show only first two for medium screens
                   <motion.div
                     key={index}
-                    className="bg-white w-80 h-56 shadow-lg rounded-3xl p-6 flex flex-col justify-center items-center text-center"
+                    className="bg-white w-82 h-64 shadow-lg rounded-3xl p-6 flex flex-col justify-center items-center text-center"
                     initial={{ opacity: 0, y: 100 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.2 }}
                     viewport={{ once: false }}
                   >
                     <div className="">
-                      <h2 className="text-2xl font-bold mb-4">{item.title}</h2>
-                      <p className="text-sm line-clamp-4" dangerouslySetInnerHTML={{ __html: item.description }}/>
+                      <h2 className="text-2xl font-bold mb-4 line-clamp-1">{item.title}</h2>
+                      <p className="text-lg line-clamp-7" dangerouslySetInnerHTML={{ __html: item.description }}/>
                     </div>
                   </motion.div>
                 ))
               : data.map((item, index) => ( // Show all items for large screens
                   <motion.div
                     key={index}
-                    className="bg-white w-80 h-56 shadow-lg rounded-3xl p-6 flex flex-col justify-center items-center text-center"
+                    className="bg-white w-86 h-64 shadow-lg rounded-3xl p-6 flex flex-col justify-center items-center text-center"
                     initial={{ opacity: 0, y: 100 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.2 }}
                     viewport={{ once: false }}
                   >
                     <div className="">
-                      <h2 className="text-2xl font-bold mb-4">{item.title}</h2>
-                      <p className="text-sm line-clamp-6" dangerouslySetInnerHTML={{ __html: item.description }}/>
+                      <h2 className="text-2xl font-bold mb-4 line-clamp-1">{item.title}</h2>
+                      <p className="text-lg line-clamp-7" dangerouslySetInnerHTML={{ __html: item.description }}/>
                     </div>
                   </motion.div>
                 ))}
