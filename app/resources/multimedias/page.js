@@ -32,7 +32,7 @@ export default function Publications() {
             }
         } catch (err) {
             toast.error('Could Not Load Multimedia Post Data.');
-            console.error("Could not load multimedia data:", + err);
+            // console.error("Could not load multimedia data:", + err);
             setError("Could not load multimedia data.");
         } finally {
           setLoading(false);

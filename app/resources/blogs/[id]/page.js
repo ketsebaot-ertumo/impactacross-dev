@@ -26,7 +26,7 @@ export default function BlogDetails() {
             }
         } catch (err) {
             toast.error("This blog post couldn't be loaded.");
-            console.error("Blog error:", err);            
+            // console.error("Blog error:", err);            
             setError("Could not load blog data.");
         } finally {
             setLoading(false);

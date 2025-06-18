@@ -61,12 +61,11 @@ export default function Footer() {
       const fetchData = async () => {
         try {
           const {data} = await getLatestData("owners");
-          console.log(data)
           if (data) {
             setData(data);
           }
         } catch (err) {
-          console.error("Failed to load data:", err);
+          // console.error("Failed to load data:", err);
         }
       };
   
@@ -86,7 +85,7 @@ export default function Footer() {
               className="h-14 w-14"
             />
             <p className="text-2xl font-semibold text-white">{data?.name || "ImpactAcross"}</p>
-            <p className="font-semibold w-60 lg:w-60">{data?.title || "If you have a Vision We will help you to turn it into reality."}</p>
+            <p className="font-semibold w-60 lg:w-60 pt-2">{data?.title || "Development Research and Consultancy PLC"}</p>
           </div>
 
           {/* Navigation Links */}

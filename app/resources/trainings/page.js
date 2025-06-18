@@ -32,7 +32,7 @@
 //             }
 //         } catch (err) {
 //             toast.error('Could Not Load Training Post Data.');
-//             console.error("Could not load training data:", + err);
+//             // console.error("Could not load training data:", + err);
 //             setError("Could not load training data.");
 //         } finally {
 //           setLoading(false);

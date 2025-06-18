@@ -23,7 +23,7 @@ export default function PublicationDetail() {
         }
       } catch (err) {
         toast.error('Could Not Load Training Post Data.');
-        console.error("Could not load training post data",err);
+        // console.error("Could not load training post data",err);
         setError("Could not load training post data.");
       } finally {
         setLoading(false);

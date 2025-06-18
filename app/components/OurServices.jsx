@@ -19,7 +19,7 @@ export default function OurSectorialFocus() {
           setData(res[0]);
         }
       } catch (err) {
-        console.error("Failed to load services:", err);
+        // console.error("Failed to load services:", err);
       }
     };
     fetchData();
@@ -182,7 +182,7 @@ export default function OurSectorialFocus() {
 //           setData(res[0]);
 //         }
 //       } catch (err) {
-//         console.error("Failed to load data:", err);
+//         // console.error("Failed to load data:", err);
 //       }
 //     };
 //     fetchData();
@@ -305,7 +305,7 @@ export default function OurSectorialFocus() {
 //             setData(data);
 //           }
 //         } catch (err) {
-//           console.error("Failed to load data:", err);
+//           // console.error("Failed to load data:", err);
 //         }
 //       };
   

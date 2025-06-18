@@ -8,8 +8,8 @@ import { RefreshCcw } from "lucide-react";
 
 const Loader = ({ className }) => {
   return (
-    <div className={cn("flex items-center justify-center", className)}>
-      <div className="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>
+    <div className="flex items-center justify-center">
+      <div className={cn("w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin", className)}></div>
       {/* <RefreshCcw className="h-6 w-6 animate-spin text-muted-foreground text-green-800" /> */}
     </div>
   );

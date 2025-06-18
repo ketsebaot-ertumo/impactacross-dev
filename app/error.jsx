@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 export default function GlobalError({ error, reset }) {
   useEffect(() => {
-    console.error('❌ Error caught in Global Error Boundary:', error);
+    // console.error('❌ Error caught in Global Error Boundary:', error);
   }, [error]);
 
   return (

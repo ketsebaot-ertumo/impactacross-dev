@@ -19,7 +19,7 @@ export default function OurExpertise() {
           setData(newData);
         }
       } catch (err) {
-        console.error("Failed to load data:", err);
+        // console.error("Failed to load data:", err);
       }
     };
 
@@ -116,7 +116,7 @@ export default function OurExpertise() {
 //           setData(newData);
 //         }
 //       } catch (err) {
-//         console.error("Failed to load data:", err);
+//         // console.error("Failed to load data:", err);
 //       }
 //     };
 
@@ -201,7 +201,7 @@ export default function OurExpertise() {
 //           setData(newData);
 //         }
 //       } catch (err) {
-//         console.error("Failed to load data:", err);
+//         // console.error("Failed to load data:", err);
 //       }
 //     };
 

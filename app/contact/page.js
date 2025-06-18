@@ -41,7 +41,7 @@ export default function Contact() {
         const { data } = await getLatestData("owners");
         if (data) setData(data);
       } catch (err) {
-        console.error("Failed to load data:", err);
+        // console.error("Failed to load data:", err);
       }
     };
 

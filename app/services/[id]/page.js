@@ -22,7 +22,7 @@ export default function ServiceDetailPage() {
         const { data } = await getDataById("services", id);
         setService(data);
       } catch (error) {
-        console.error("Error fetching service by ID:", error);
+        // console.error("Error fetching service by ID:", error);
       } finally {
         setLoading(false);
       }
@@ -118,7 +118,7 @@ export default function ServiceDetailPage() {
 //         const { data } = await getDataById("services", id);
 //         setService(data);
 //       } catch (error) {
-//         console.error("Error fetching service by ID:", error);
+//         // console.error("Error fetching service by ID:", error);
 //       } finally {
 //         setLoading(false);
 //       }

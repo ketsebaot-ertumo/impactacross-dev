@@ -14,7 +14,7 @@ export default function WhoWeAre() {
             setData(data);
           }
         } catch (err) {
-          console.error("Failed to load data:", err);
+          // console.error("Failed to load data:", err);
         }
       };
   

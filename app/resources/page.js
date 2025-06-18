@@ -34,7 +34,7 @@ export default function ResourceGrid() {
         });
       } catch(err){
           toast.error('Could Not Load Post Data.');
-          console.error("Could not load data:", + err);
+          // console.error("Could not load data:", + err);
           setError("Could not load data.");
       } finally {
         setLoading(false);
@@ -55,14 +55,14 @@ export default function ResourceGrid() {
             />
             <div className="absolute inset-0 bg-black opacity-50 w-full"></div>
             <div className="absolute inset-0 flex items-center max-w-6xl mx-auto pl-8 lg:pl-0">
-                <div className="text-white text-2xl md:text-4xl font-bold border-b pb-4">
+                <div className="text-white text-3xl md:text-4xl font-bold border-b pb-4">
                     Resources
                 </div>
             </div>
         </div>
 
         {loading ? (
-            <Loader />
+          <div className="h-[40vh] flex justify-center items-center"><Loader/></div>
         ) : (
             (resources.length === 0 || !resources || resources === null) ? (
                 <main className="container max-w-6xl mx-auto px-6 py-12 text-center text-gray-500 py-36">
@@ -80,11 +80,6 @@ export default function ResourceGrid() {
                           </div>
                         ))}
                       </div>
-                      {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                          {resources.map((item) => (
-                              <ResourceCard key={item.id} {...item} />
-                          ))}
-                      </div> */}
                   </section>
                 </div>
             ))}

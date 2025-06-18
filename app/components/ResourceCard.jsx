@@ -17,6 +17,8 @@ const ResourceCard = ({ id, name, imageURL, mediaURL, title, content }) => {
           src={imageURL || mediaURL}
           alt={title}
           fill
+          // width={100}
+          // height={100}
           className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
@@ -29,7 +31,7 @@ const ResourceCard = ({ id, name, imageURL, mediaURL, title, content }) => {
         <h3 className="text-xl font-bold text-gray-800 group-hover:text-green-600 transition-colors mb-4 line-clamp-1">
           {title}
         </h3>
-        <p className="text-base text-gray-600 leading-relaxed line-clamp-2">
+        <p className="text-base text-gray-600 line-clamp-2">
           {content}
         </p>
       </div>

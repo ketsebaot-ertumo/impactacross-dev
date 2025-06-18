@@ -18,7 +18,7 @@ export default function Home() {
           // setData(data);
         }
       } catch (err) {
-        console.error("Failed to load data:", err);
+        // console.error("Failed to load data:", err);
       }
     };
 

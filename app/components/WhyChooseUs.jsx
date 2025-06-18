@@ -16,7 +16,7 @@ export default function WhyChooseUs() {
             setData(newData);
           }
         } catch (err) {
-          console.error("Failed to load data:", err);
+          // console.error("Failed to load data:", err);
         }
       };
   

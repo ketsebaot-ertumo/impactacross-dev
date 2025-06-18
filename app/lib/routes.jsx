@@ -11,7 +11,7 @@ export async function getLatestBlogPost() {
         }
         return res.data;
     } catch (err) {
-        console.error("Error fetching latest blog post:", err);
+        // console.error("Error fetching latest blog post:", err);
         return err.message;
     }
 };
@@ -25,7 +25,7 @@ export async function getAllBlogs( page, limit ) {
     }
     return res?.data || res
   } catch (err) {
-    console.error("Error fetching latest blog post:", err);
+    // console.error("Error fetching latest blog post:", err);
     return err.message;
   }
 }
@@ -39,7 +39,7 @@ export async function getSingleBlogPost(id) {
         }
         return res?.data || res;
     } catch (err) {
-        console.error("Error fetching latest blog post:", err);
+        // console.error("Error fetching latest blog post:", err);
         return err.message;
     }
 };
@@ -54,7 +54,7 @@ export async function getLatestPublication() {
         }
         return res?.data || res;
     } catch (err) {
-        console.error("Error fetching latest post:", err);
+        // console.error("Error fetching latest post:", err);
         return err.message;
     }
 };
@@ -68,7 +68,7 @@ export async function getAllPublication( page, limit ) {
     }
     return res?.data || res
   } catch (err) {
-    console.error("Error fetching latest post:", err);
+    // console.error("Error fetching latest post:", err);
     return err.message;
   }
 }
@@ -83,7 +83,7 @@ export async function getSinglePublicationPost(id) {
     }
     return res?.data || res;
   } catch (err) {
-    console.error("Error fetching latest post:", err);
+    // console.error("Error fetching latest post:", err);
     return err.message;
   }
 };
@@ -97,7 +97,7 @@ export async function getLatestMultimedia() {
         }
         return res?.data || res;
     } catch (err) {
-        console.error("Error fetching latest post:", err);
+        // console.error("Error fetching latest post:", err);
         return err.message;
     }
 };
@@ -111,7 +111,7 @@ export async function getAllMultimedias( page, limit ) {
         }
         return res?.data || res
     } catch (err) {
-        console.error("Error fetching latest post:", err);
+        // console.error("Error fetching latest post:", err);
         return err.message;
     }
 }
@@ -125,7 +125,7 @@ export async function getSingleMultimediaPost(id) {
         }
         return res?.data || res;
     } catch (err) {
-        console.error("Error fetching latest multimedia post:", err);
+        // console.error("Error fetching latest multimedia post:", err);
         return err.message;
     }
 };
@@ -140,7 +140,7 @@ export async function getLatestTraining() {
         }
         return res?.data || res;
     } catch (err) {
-        console.error("Error fetching latest training post:", err);
+        // console.error("Error fetching latest training post:", err);
         return err.message;
     }
 };
@@ -154,7 +154,7 @@ export async function getAllTrainings( page, limit ) {
         }
         return res?.data || res
     } catch (err) {
-        console.error("Error fetching latest training post:", err);
+        // console.error("Error fetching latest training post:", err);
         return err.message;
     }
 }
@@ -168,7 +168,7 @@ export async function getSingleTrainingPost(id) {
         }
         return res?.data || res;
     } catch (err) {
-        console.error("Error fetching latest training post:", err);
+        // console.error("Error fetching latest training post:", err);
         return err.message;
     }
 };
@@ -178,10 +178,9 @@ export async function getSingleTrainingPost(id) {
 export async function getAllData(entity, page=1, limit=10 ) {
     try {
         const res = await API.get(`/${entity}/?limit=${limit}&page=${page}`);
-        // console.log("\n\nget all res:", res?.data,)
             return res?.data || res;
     } catch (err) {
-        console.error(`Error fetching ${entity}:`, err);
+        // console.error(`Error fetching ${entity}:`, err);
         return err.message;
     }
 }
@@ -193,7 +192,7 @@ export async function getLatestData(entity ) {
         const res = await API.get(`/${entity}/latest`);
         return res?.data || res;
     } catch (err) {
-        console.error(`Error fetching latest ${entity}:`, err);
+        // console.error(`Error fetching latest ${entity}:`, err);
         return err.message;
     }
 }
@@ -206,7 +205,7 @@ export async function getDataById(entity, id) {
         const res = await API.get(`/${entity}/${id}`);
         return res?.data || res;
     } catch (err) {
-        console.error(`Error fetching latest ${entity}:`, err);
+        // console.error(`Error fetching latest ${entity}:`, err);
         return err.message;
     }
 }
