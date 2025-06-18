@@ -24,15 +24,15 @@ export const viewport = {
 export const metadata = {
   metadataBase: new URL("https://impactacross.com"),
   title: {
-    default: "ImpactAcross",
+    default: "ImpactAcross Development Research and Consultancy PLC",
     template: "%s | ImpactAcross"
   },
   description: "ImpactAcross is a dynamic development research and consultancy firm committed to transforming lives and systems across Africa. We specialize in delivering high-quality research, policy analysis, program design, monitoring & evaluation (M&E), capacity building, and strategic advisory services to NGOs, governments, development agencies, and the private sector.",
   keywords: ["impactacross", "consultancy", "development", "sustainability", "reasearch"],
   authors: [{ name: "Ketsebaot Ertumo", url: "https://ketsebaot.vercel.app" }],
   icons: {
-    icon: 'https://res.cloudinary.com/dq6mvqivd/image/upload/v1750098307/ImpactAcross/owner/WhatsApp_Image_2025-06-16_at_6.20.52_PM-removebg-preview_rrgeex.png',
-    apple: 'https://res.cloudinary.com/dq6mvqivd/image/upload/v1750098307/ImpactAcross/owner/WhatsApp_Image_2025-06-16_at_6.20.52_PM-removebg-preview_rrgeex.png'
+    icon: '/logo1.jpeg',
+    apple: '/logo1.jpeg'
   },
   openGraph: {
     title: "ImpactAcross Development Research and Consultancy PLC",
@@ -45,6 +45,7 @@ export const metadata = {
         width: 1200,
         height: 630,
         alt: "ImpactAcross Development Research and Consultancy PLC",
+        type: "image/png"
       },
     ],
     locale: "en_US",
@@ -60,6 +61,7 @@ export const metadata = {
         width: 1200,
         height: 630,
         alt: "ImpactAcross Development Research and Consultancy PLC",
+        type: "image/png"
       },
     ],
   },
