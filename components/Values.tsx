@@ -33,7 +33,7 @@ export default function ValuesSection() {
         // const [data] = response;
         if (data?.valuesData) setValues(data);
       } catch (error) {
-        console.error('Failed to load values:', error);
+        // console.error('Failed to load values:', error);
       }
     };
 

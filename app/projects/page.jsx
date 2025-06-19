@@ -16,13 +16,10 @@ export default function ProjectsAndPartners() {
   const [totalPages, setTotalPages] = useState(1);
   const [pageSize, setPageSize] = useState(10);
 
-  console.log("\n page:", currentPage)
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await getAllData('projects', currentPage, pageSize);
-        console.log("data:", data)
         if (data) {
           setProjectsData(data?.data);
           setTitle(data?.data?.[0]?.section?.title);

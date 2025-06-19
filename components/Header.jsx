@@ -235,7 +235,7 @@ export default function Header() {
       link.href = `https://fonts.googleapis.com/css2?family=${googleFontName}:wght@400;500;600;700;800;900&display=swap`;
       link.onload = setFont;
       link.onerror = () => {
-        console.warn(`Google Font ${fontFamily} not found. Falling back.`);
+        // console.warn(`Google Font ${fontFamily} not found. Falling back.`);
         setFont();
       };
       document.head.appendChild(link);
@@ -251,7 +251,7 @@ export default function Header() {
           setFont();
         })
         .catch((err) => {
-          console.warn(`Custom font "${fontFamily}" failed to load:`, err);
+          // console.warn(`Custom font "${fontFamily}" failed to load:`, err);
           setFont();
         });
     }

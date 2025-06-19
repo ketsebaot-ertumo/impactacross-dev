@@ -110,7 +110,7 @@ export default function Partners() {
         const [partnerData] = response;
         if (partnerData) setPartners(partnerData);
       } catch (err) {
-        console.error('Failed to load data:', err);
+        // console.error('Failed to load data:', err);
       } finally {
         setLoading(false);
       }

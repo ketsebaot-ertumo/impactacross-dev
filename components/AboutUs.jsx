@@ -87,7 +87,7 @@ export default function WhoWeAre() {
         const { data } = await getLatestData("about_us");
         if (data) setData(data);
       } catch (err) {
-        console.error("Failed to load data:", err);
+        // console.error("Failed to load data:", err);
       }
     };
     fetchData();
