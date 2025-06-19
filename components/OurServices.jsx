@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { getAllData } from "../app/lib/routes";
 import Loader from "./Loader";
 
-const image_url = "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749649749/ImpactAcross/owner/ourTeam_bkkp8t.png";
+const image_url = "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750097496/ImpactAcross/images/photo_5944760772829759997_x_f4pshd.jpg"
 const defaultValues = [
   {
     title: "Research & Policy Analysis",

@@ -275,7 +275,7 @@ export default function Header() {
     { title: "Home", path: "/" },
     { title: "About Us", path: "/#about" },
     { title: "Services", path: "/#services" },
-    { title: "Our Teams", path: "/#teams" },
+    { title: "Gallary", path: "/gallary" },
     { title: "Resources", path: "/resources" },
     { title: "Contact Us", path: "/contact" },
   ];
@@ -292,10 +292,9 @@ export default function Header() {
       );
     }
   
-    if (linkPath === "/#teams") {
+    if (linkPath === "/gallary") {
       return (
-        (pathname === "/" && hash === "#teams") ||
-        pathname.startsWith("/team-detail")
+        pathname.startsWith("/gallary")
       );
     }
   
@@ -306,7 +305,17 @@ export default function Header() {
     if (linkPath === "/contact") {
       return pathname === "/contact";
     }
-  
+
+    if (linkPath === "/") {
+      return (
+        (pathname === "/") ||
+        pathname.startsWith("/values") ||
+        pathname.startsWith("/projects") ||
+        (pathname === "/" && hash === "#teams") ||
+        pathname.startsWith("/team-detail")
+      );
+    }
+    
     return pathname === linkPath;
   };
   
