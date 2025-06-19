@@ -47,7 +47,7 @@ export default function OurSectorialFocus() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getAllData('teams', currentPage, pageSize);
+        const data = await getAllData('services', currentPage, pageSize);
         if (data?.data) {
           setData(data?.data);
           setDescription(data?.data?.[0]?.section?.description);
