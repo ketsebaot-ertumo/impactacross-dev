@@ -2,10 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
 import { useEffect, useState } from "react";
-import Loader from "../../components/Loader";
+import Loader from "../../../components/Loader";
 import { getAllPublication } from "../../lib/routes";
 import toast from "react-hot-toast";
 
@@ -44,10 +42,31 @@ export default function Publications() {
       }
     };
 
+    if (loading)
+        return (
+            <div className="h-screen flex justify-center">
+            <Loader />
+            </div>
+        );
+
+        if(error){
+            return (
+                <div className="min-h-screen flex items-center justify-center text-red-600 text-2xl">
+                    Unable to fetch data.
+                </div>
+            );
+        }
+
+        if(!resources){
+        return (
+            <div className="min-h-screen flex items-center justify-center text-red-600 text-lg">
+                Publication not found.
+            </div>
+        );
+    }
+
     return (
         <>
-            <Header />
-
             {loading ? (
                 <Loader />
             ) : (
@@ -151,8 +170,6 @@ export default function Publications() {
                             </select>
                             </div>
                         </div>
-
-                        <Footer />
                     </div>
                 )
             )}

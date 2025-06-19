@@ -2,13 +2,10 @@
 "use client";
 
 import Head from "next/head";
-import ContactForm from "../components/ContactForm";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import ContactForm from "../../components/ContactForm";
 import { Phone } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { getLatestData } from "../lib/routes";
-import Image from "next/image";
 
 const fallbackData = {
   logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749714702/ImpactAcross/owner/logo1_ekrjmf.png",
@@ -50,7 +47,6 @@ export default function Contact() {
 
   return (
     <>
-      <Header />
       <div className="bg-primary text-gray-600">
         <Head>
           <title>Contact Us</title>
@@ -71,11 +67,6 @@ export default function Contact() {
               </div>
             </div>
         </div>
-
-        {/* <header className="absolute py-20 text-white text-center">
-          <h1 className="text-5xl font-extrabold">Contact Us</h1>
-          <p className="mt-4 text-xl">We're here to help! Drop us a message.</p>
-        </header> */}
 
         <main className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <section className="py-16">
@@ -117,8 +108,6 @@ export default function Contact() {
             </div>
           </section>
         </main>
-
-        <Footer />
       </div>
     </>
   );

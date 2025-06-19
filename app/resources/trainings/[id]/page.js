@@ -1,11 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Footer from "../../../components/Footer";
-import Header from "../../../components/Header";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import Loader from "../../../components/Loader";
+import Loader from "../../../../components/Loader";
 import { getSingleTrainingPost } from "../../../lib/routes";
 
 export default function PublicationDetail() {
@@ -33,12 +31,31 @@ export default function PublicationDetail() {
     loadPost();
   }, [id]);
 
-  if (loading) return <Loader />;
+  if (loading)
+    return (
+        <div className="h-screen flex justify-center">
+          <Loader />
+        </div>
+    );
+
+  if(error){
+      return (
+          <div className="min-h-screen flex items-center justify-center text-red-600 text-2xl">
+              Unable to fetch data.
+          </div>
+      );
+  }
+
+  if(!post){
+      return (
+          <div className="min-h-screen flex items-center justify-center text-red-600 text-lg">
+              Training not found.
+          </div>
+      );
+  }
 
   return (
     <>
-        <Header />
-
         {(!post || !post?.id) ? (
             <main className="container max-w-6xl mx-auto px-6 py-20 text-center min-h-[70vh] flex flex-col justify-center items-center">
                 <h1 className="text-4xl font-bold text-red-500 mb-4">❌ Oops!</h1>
@@ -55,7 +72,7 @@ export default function PublicationDetail() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10" />
                     <div className="z-20 text-center px-6">
-                      <h1 className="text-white font-serif text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg">
+                      <h1 className="text-white font-serif text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg max-w-4xl mx-auto">
                           {post.title}
                       </h1>
                       <p className="mt-4 text-gray-300 text-sm">
@@ -87,8 +104,6 @@ export default function PublicationDetail() {
                     </article>
                   </div>
                 </section>
-                    
-                <Footer />
             </div>
         )}
     </>

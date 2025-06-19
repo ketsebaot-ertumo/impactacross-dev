@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
-import { getAllData } from "../lib/routes";
+import { getAllData } from "../app/lib/routes";
 
 export default function OurExpertise() {
   const [data, setData] = useState({});
@@ -29,11 +29,10 @@ export default function OurExpertise() {
   // Check if text needs expand/collapse
   const checkOverflow = () => {
     if (descriptionRef.current) {
-      // When expanded, we need to check if the original text would overflow when collapsed
       const element = descriptionRef.current;
       const isOverflowing = expanded 
-        ? element.scrollHeight > element.clientHeight // Check if would overflow when collapsed
-        : element.scrollHeight > element.clientHeight; // Current overflow state
+        ? element.scrollHeight > element.clientHeight
+        : element.scrollHeight > element.clientHeight;
       
       setNeedsExpand(isOverflowing);
     }
@@ -50,7 +49,7 @@ export default function OurExpertise() {
   }, [data?.description, expanded]);
 
   return (
-    <section className="bg-gray-900 text-white pt-16 pb-6 px-8 md:px-12">
+    <section className="bg-green-950 text-white pt-16 pb-6 px-8 md:px-12">
       <div className="max-w-screen-lg mx-auto text-center">
         <motion.h2
           className="text-4xl font-bold pb-4"
@@ -59,8 +58,10 @@ export default function OurExpertise() {
           transition={{ delay: 0.3, duration: 0.5 }}
           viewport={{ once: false }}
         >
-          {data?.title || "Our Expertise"}
+          <p>Our Purpose</p>
         </motion.h2>
+
+        <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
         
         <motion.div
           className="text-center max-w-4xl mx-auto my-8 sm:mb-12"
@@ -133,7 +134,7 @@ export default function OurExpertise() {
 //   }, [data?.description]);
 
 //   return (
-//     <section className="bg-gray-900 text-white pt-16 pb-6 px-8 md:px-12">
+//     <section className="bg-green-950 text-white pt-16 pb-6 px-8 md:px-12">
 //       <div className="max-w-screen-lg mx-auto text-center">
 //         <motion.h2
 //           className="text-4xl font-bold pb-4"
@@ -209,7 +210,7 @@ export default function OurExpertise() {
 //   }, []);
 
 //   return (
-//     <section className="bg-gray-900 text-white pt-16 pb-6 px-8 md:px-12">
+//     <section className="bg-green-950 text-white pt-16 pb-6 px-8 md:px-12">
 //       <div className="max-w-screen-lg mx-auto text-center">
 //         <motion.h2
 //           className="text-4xl font-bold pb-4"

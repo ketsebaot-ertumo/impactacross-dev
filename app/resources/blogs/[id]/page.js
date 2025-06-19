@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Footer from "../../../components/Footer";
-import Header from "../../../components/Header";
+import Footer from "../../../../components/Footer";
+import Header from "../../../../components/Header";
 import Image from "next/image";
 import { notFound, useParams } from "next/navigation";
-import Loader from "../../../components/Loader";
+import Loader from "../../../../components/Loader";
 import { getSingleBlogPost } from "../../../lib/routes";
 import toast from "react-hot-toast";
 
@@ -36,7 +36,7 @@ export default function BlogDetails() {
         loadBlog();
     }, [id]);
 
-    if(loading) return <Loader />;
+    if(loading) return <div className="h-screen flex justify-center"><Loader /></div>;
 
     return (
         <>
@@ -49,7 +49,7 @@ export default function BlogDetails() {
                 </main>
             ) :(
                 <div>
-                    <section className="relative h-[40vh] lg:h-[60vh] w-full flex items-center justify-center bg-gray-900 overflow-hidden">
+                    <section className="relative h-[40vh] lg:h-[60vh] w-full flex items-center justify-center bg-green-950 overflow-hidden">
                         <Image
                             src={blog.imageURL}
                             alt={blog.title}
@@ -57,7 +57,7 @@ export default function BlogDetails() {
                             className="object-cover opacity-30 blur-sm"
                         />
                         <div className="z-10 text-center px-6">
-                            <h1 className="text-4xl md:text-6xl font-semibold text-white drop-shadow-lg">{blog.title}</h1>
+                            <h1 className="text-4xl md:text-5xl font-semibold text-white drop-shadow-lg max-w-4xl mx-auto">{blog.title}</h1>
                         </div>
                     </section>
 

@@ -188,7 +188,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { usePathname } from "next/navigation";
-import { getLatestData } from "../lib/routes";
+import { getLatestData } from "../app/lib/routes";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -273,19 +273,43 @@ export default function Header() {
 
   const navLinks = [
     { title: "Home", path: "/" },
-    { title: "About", path: "/#about" },
+    { title: "About Us", path: "/#about" },
     { title: "Services", path: "/#services" },
-    { title: "Teams", path: "/#teams" },
+    { title: "Our Teams", path: "/#teams" },
     { title: "Resources", path: "/resources" },
-    { title: "Contact", path: "/contact" },
+    { title: "Contact Us", path: "/contact" },
   ];
 
   const isActiveLink = (linkPath) => {
-    if (linkPath.includes("#")) {
-      return window.location.hash === linkPath.slice(linkPath.indexOf("#"));
+    if (linkPath === "/#about") {
+      return pathname === "/" && (hash === "#about");
     }
+  
+    if (linkPath === "/#services") {
+      return (
+        (pathname === "/" && hash === "#services") ||
+        pathname.startsWith("/services")
+      );
+    }
+  
+    if (linkPath === "/#teams") {
+      return (
+        (pathname === "/" && hash === "#teams") ||
+        pathname.startsWith("/team-detail")
+      );
+    }
+  
+    if (linkPath === "/resources") {
+      return pathname === "/resources" || pathname.startsWith("/resources/");
+    }
+  
+    if (linkPath === "/contact") {
+      return pathname === "/contact";
+    }
+  
     return pathname === linkPath;
   };
+  
 
   return (
     <div className="bg-white text-gray-600 sticky top-0 z-50">

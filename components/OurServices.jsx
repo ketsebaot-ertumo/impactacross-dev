@@ -3,48 +3,92 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getAllData } from "../lib/routes";
+import { getAllData } from "../app/lib/routes";
 import Loader from "./Loader";
 
+const image_url = "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749649749/ImpactAcross/owner/ourTeam_bkkp8t.png";
+const defaultValues = [
+  {
+    title: "Research & Policy Analysis",
+    content: "We deliver rigorous, high-quality studies that generate actionable insights to inform policy and support evidence-based decision-making. Our expertise spans impact evaluations, baseline and endline surveys, political economy and policy analysis, as well as thematic research on climate change, livelihoods, and governance.",
+    slug: "research-policy-analysis",
+    image_url,
+  },
+  {
+    title: "Program Design & Strategy Development",
+    content: "We support the design of impactful and scalable programs rooted in local realities and aligned with global frameworks. Our services include conducting feasibility studies and investment cases, developing Theories of Change and results frameworks, and crafting compelling proposals and technical reports.",
+    slug: "programme-design-strategy-development",
+    image_url,
+  },
+  {
+    title: "Monitoring, Evaluation & Learning (MEL)",
+    content: "We build robust Monitoring, Evaluation, and Learning (MEL) systems that enhance accountability, foster continuous learning, and support adaptive project management. Our work includes designing MEL frameworks and tools, conducting performance monitoring and data analysis, and managing learning processes and reporting to inform decision-making.",
+    slug: "monitoring-evaluation-learning",
+    image_url,
+  },
+  {
+    title: "Capacity Building & Technical Assistance",
+    content: "We empower organizations and communities through tailored training, mentorship, and advisory support. Our services include capacity building in climate finance, monitoring and evaluation (M&E), and project management; strengthening organizational systems and structures; and facilitating effective stakeholder engagement for inclusive and sustainable impact.",
+    slug: "capacity-building-technical-assistance",
+    image_url,
+  },
+]
 
 export default function OurSectorialFocus() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(defaultValues);
+  const [loading, setLoading] = useState(true);
+  const [description, setDescription] = useState(defaultValues?.[0]?.section?.description);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [pageSize, setPageSize] = useState(4);
   const [expandedIndex, setExpandedIndex] = useState(null);
 
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data: res } = await getAllData("sections/values/service");
-        if (res?.length) {
-          setData(res[0]);
+        const data = await getAllData('teams', currentPage, pageSize);
+        if (data?.data) {
+          setData(data?.data);
+          setDescription(data?.data?.[0]?.section?.description);
+          setCurrentPage(data?.pagination?.page);
+          setTotalPages(data.pagination.totalPages);
         }
-      } catch (err) {
-        // console.error("Failed to load services:", err);
+      } catch {
+        setData(fallback[0]);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
-  }, []);
+  }, [currentPage, pageSize]);
+
+  const handleSeeMore = (page) => {
+    if (page >= 1 && page <= totalPages) {
+        setCurrentPage(page);
+    }
+  };
 
   return (
     <section id="services" className="scroll-mt-24 bg-gray-100 py-16 text-gray-800">
       <div className="max-w-6xl mx-auto px-4 md:px-8">
-        <h2 className="text-4xl font-bold text-center line-clamp-4">{data?.title || "Our Services"}</h2>
+        <h2 className="text-4xl font-bold text-center line-clamp-4">Our Services</h2>
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
-        <p className="text-center max-w-3xl mx-auto text-lg sm:text-lg italic">
-          {data?.description || "At ImpactAcross, we provide end-to-end research, strategy, and advisory services tailored to accelerate sustainable development across Africa."}
+        <p className="text-center max-w-4xl mx-auto text-lg text-lg italic">
+          {description || "At ImpactAcross, we provide end-to-end research, strategy, and advisory services tailored to accelerate sustainable development across Africa."}
         </p>
 
         {/* Horizontal scroll on mobile/tablet */}
-        <div className="mt-10 block lg:hidden overflow-x-auto no-scrollbar px-1">
+        <div className="mt-10 block lg:hidden overflow-x-auto scrollbar-hide px-1">
           <div className="flex gap-4">
-            {data?.services?.map((item, i) => (
+            {data?.map((item, i) => (
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.03 }}
                 className="flex-shrink-0 w-[85vw] sm:w-[60vw] bg-white rounded-2xl shadow-lg p-5 border border-gray-200"
               >
                 <img
-                  src={item.image_url || item.image || fallbackImage}
+                  src={item.image_url || image_url}
                   alt={item.title}
                   className="w-full h-40 object-cover rounded-xl mb-4"
                 />
@@ -61,11 +105,19 @@ export default function OurSectorialFocus() {
           </div>
         </div>
 
-        {!data?.services && (<Loader className="h-12 text-green" />)}
+        {!data && (
+          loading ? (
+            <div className="h-16 flex justify-center">
+            <Loader className="" />
+            </div>
+          ) : (
+            <p className="h-16 text-emerald-500 mx-auto">No data Found!</p>
+          )
+        )}
 
         {/* Grid + accordion on large screens */}
         <div className="hidden lg:grid grid-cols-2 gap-6 mt-10">
-          {data?.services?.map((item, i) => (
+          {data?.map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -113,6 +165,14 @@ export default function OurSectorialFocus() {
             </motion.div>
           ))}
         </div>
+
+        {data?.length > 4 && (
+          <button 
+            onClick={() => handleSeeMore(currentPage + 1)} 
+            className='cursor-pointer text-gray-800 flex justify-center text-xl shadow-lg border border-green-800 p-4 my-6 rounded-lg max-w-2xl mx-auto'>
+              Do you want see more services?
+          </button>
+        )}
       </div>
     </section>
   );

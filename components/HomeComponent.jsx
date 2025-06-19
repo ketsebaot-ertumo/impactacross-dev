@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getAllData } from "../lib/routes";
 import MissionVisionObjective from "./MissionVisionObjectives";
+import { getAllData } from "../app/lib/routes";
 
 
 export default function Home() {

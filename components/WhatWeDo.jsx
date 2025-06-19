@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { getAllData } from "../lib/routes";
+import { getAllData } from "../app/lib/routes";
 import Loader from "./Loader";
 
 const ITEMS_PER_PAGE = 3;

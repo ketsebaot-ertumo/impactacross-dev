@@ -3,10 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import Loader from "../../components/Loader";
-import { notFound } from "next/navigation";
+import Loader from "../../../components/Loader";
 import { getAllBlogs } from "../../lib/routes";
 
 export default function Blogs() {
@@ -43,14 +40,31 @@ export default function Blogs() {
         }
     };
 
-    if(error || !resources){
-       return notFound();
+    if (loading)
+        return (
+            <div className="h-screen flex justify-center">
+            <Loader />
+            </div>
+        );
+
+    if(error){
+        return (
+            <div className="min-h-screen flex items-center justify-center text-red-600 text-2xl">
+                Unable to fetch data.
+            </div>
+        );
+    }
+
+    if(!resources){
+        return (
+            <div className="min-h-screen flex items-center justify-center text-red-600 text-lg">
+                Blogs not found.
+            </div>
+        );
     }
 
     return (
         <>
-            <Header />
-
             {loading ? (
                 <Loader />
             ) : (
@@ -155,8 +169,6 @@ export default function Blogs() {
                                 </select>
                             </div>
                         </div>
-                        
-                        <Footer />
                     </div>
                 )
             )}

@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 export default function GlobalError({ error, reset }) {
   useEffect(() => {
-    // console.error('❌ Error caught in Global Error Boundary:', error);
+    console.error('❌ Error caught in Global Error Boundary:', error);
   }, [error]);
 
   return (
@@ -15,7 +15,7 @@ export default function GlobalError({ error, reset }) {
       
       <button
         onClick={() => reset()}
-        className="mt-6 px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-800 transition"
+        className="mt-6 px-6 py-2 bg-green-800 text-white rounded-md hover:bg-green-800 transition"
       >
         Try Again
       </button>
