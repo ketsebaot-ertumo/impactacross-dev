@@ -32,16 +32,20 @@ export default function ProjectsAndPartners() {
   },]);
   const [title, setTitle ] = useState("Projects Overview");
   const [description, setDescription ] = useState( "With our deep industry expertise, multi-disciplinary capabilities and rigorous analysis, we deliver high-quality technical studies, evaluations, and project design services.");
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
+  const [total, setTotal] = useState(5)
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getAllData('projects', 1, 5);
-        // console.log(data)
+        const data = await getAllData('projects', currentPage, pageSize);
         if (data && data?.data) {
           setProjectsData(data?.data);
           setTitle(data?.[0]?.section?.title);
           setDescription(data?.[0]?.section?.description);
+          setTotal(data.pagination.total);
+          setPageSize(data?.pagination?.pageSize);
         }
       } catch (error) {
         // console.error('Failed to load project data:', error);
@@ -132,7 +136,7 @@ export default function ProjectsAndPartners() {
           ))}
         </div>
 
-        {projectsData && projectsData?.length > 5 && (
+        {total > pageSize && (
           <Link href="/projects"><span className='italic text-gray-400 flex justify-end pr-4'>see more..</span></Link>
         )}
       </div>

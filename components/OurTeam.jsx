@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaLinkedin, FaFacebook, FaXTwitter, FaGlobe } from 'react-icons/fa6';
 import { getAllData } from '../app/lib/routes';
 import Loader from './Loader';
+import { CropLandscapeOutlined, More } from '@mui/icons-material';
 
 const image_url = "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749649749/ImpactAcross/owner/ourTeam_bkkp8t.png";
 const founder_image_url= "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750181190/ImpactAcross/images/WhatsApp_Image_2025-06-17_at_8.12.33_PM_jgj4wi.jpg";
@@ -18,7 +19,7 @@ const defaultData = [
     email: "kassahunks@impactacross.com",
     linkedin: "https://linkedin.com/in/",
     facebook: "https://facebook.com",
-    image_url,
+    image_url: founder_image_url,
     section: {
       description: "ImpactAcross is powered by a passionate, diverse team dedicated to driving data-driven change across key development sectors. We combine local knowledge with global expertise to deliver innovative, impactful solutions grounded in integrity and partnership."
     }
@@ -83,6 +84,7 @@ export default function OurTeam() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [pageSize, setPageSize] = useState(5);
+  const [total, setTotal] = useState(5);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -93,6 +95,8 @@ export default function OurTeam() {
           setDescription(data?.data?.[0]?.section?.description);
           setCurrentPage(data?.pagination?.page);
           setTotalPages(data.pagination.totalPages);
+          setTotal(data.pagination.total);
+          setPageSize(data?.pagination?.pageSize);
         }
       } catch {
         setData(fallback[0]);
@@ -101,12 +105,10 @@ export default function OurTeam() {
       }
     };
     fetchData();
-  }, [currentPage, pageSize]);
+  }, [currentPage, pageSize, total]);
 
-   const handleSeeMore = (page) => {
-    if (page >= 1 && page <= totalPages) {
-        setCurrentPage(page);
-    }
+   const handleSeeMore = (limit) => {
+        setPageSize(limit);
    };
 
   const founder = data.find((member) => member?.position?.toLowerCase()?.includes('founder')) || defaultData.find((member) => member?.position?.toLowerCase()?.includes('founder'));
@@ -214,13 +216,24 @@ export default function OurTeam() {
           ))}
         </div>
 
-        {data?.length > 5 && (
-          <button 
-            onClick={() => handleSeeMore(currentPage + 1)} 
-            className='cursor-pointer text-gray-800 flex justify-center text-xl shadow-lg border border-green-800 p-4 rounded-lg max-w-2xl mx-auto'>
-              Do you want see more team members?
-          </button>
-        )}
+        
+        <div className='sm:flex sm:justify-center max-w-2xl mx-auto'>
+          {(total > pageSize) && (
+            <button 
+              onClick={() => handleSeeMore(pageSize + 5)} 
+              className='cursor-pointer text-gray-800 flex justify-center text-md shadow-lg border border-green-800 p-4 mt-8 rounded-lg max-w-2xl mx-auto'>
+                Do you want to see more?
+            </button>
+          )}
+
+          {pageSize > 5 && (
+            <button 
+              onClick={() => handleSeeMore(pageSize - 5)} 
+              className='cursor-pointer text-gray-800 flex justify-center text-md shadow-lg border border-green-800 p-4 mt-8 rounded-lg max-w-2xl mx-auto'>
+                See Less to go Back?
+            </button>
+          )}
+        </div>
       </div>
     </section>
   );

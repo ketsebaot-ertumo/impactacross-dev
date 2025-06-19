@@ -1,10 +1,10 @@
-import ThankYou from "../components/ThankYou";
+// import ThankYou from "../../components/ThankYou";
 
-export default function Home() {
-  return (
-    <>
-        <ThankYou/>
-    </>
+// export default function Home() {
+//   return (
+//     <>
+//         <ThankYou/>
+//     </>
     
-  );
-}
+//   );
+// }

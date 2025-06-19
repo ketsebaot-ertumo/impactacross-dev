@@ -41,6 +41,7 @@ export default function OurSectorialFocus() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [pageSize, setPageSize] = useState(4);
+  const [total, setTotal] = useState(4)
   const [expandedIndex, setExpandedIndex] = useState(null);
 
   
@@ -53,6 +54,8 @@ export default function OurSectorialFocus() {
           setDescription(data?.data?.[0]?.section?.description);
           setCurrentPage(data?.pagination?.page);
           setTotalPages(data.pagination.totalPages);
+          setTotal(data.pagination.total);
+          setPageSize(data?.pagination?.pageSize);
         }
       } catch {
         setData(fallback[0]);
@@ -63,10 +66,8 @@ export default function OurSectorialFocus() {
     fetchData();
   }, [currentPage, pageSize]);
 
-  const handleSeeMore = (page) => {
-    if (page >= 1 && page <= totalPages) {
-        setCurrentPage(page);
-    }
+  const handleSeeMore = (limit) => {
+    setPageSize(limit);
   };
 
   return (
@@ -166,13 +167,23 @@ export default function OurSectorialFocus() {
           ))}
         </div>
 
-        {data?.length > 4 && (
-          <button 
-            onClick={() => handleSeeMore(currentPage + 1)} 
-            className='cursor-pointer text-gray-800 flex justify-center text-xl shadow-lg border border-green-800 p-4 my-6 rounded-lg max-w-2xl mx-auto'>
-              Do you want see more services?
-          </button>
-        )}
+        <div className='sm:flex sm:justify-center max-w-2xl mx-auto'>
+          {(total > pageSize) && (
+            <button 
+              onClick={() => handleSeeMore(pageSize + 5)} 
+              className='cursor-pointer text-gray-800 flex justify-center text-md shadow-lg border border-green-800 p-4 mt-8 rounded-lg max-w-2xl mx-auto'>
+                Do you want to see more?
+            </button>
+          )}
+
+          {pageSize > 5 && (
+            <button 
+              onClick={() => handleSeeMore(pageSize - 5)} 
+              className='cursor-pointer text-gray-800 flex justify-center text-md shadow-lg border border-green-800 p-4 mt-8 rounded-lg max-w-2xl mx-auto'>
+                See Less to go Back?
+            </button>
+          )}
+        </div>
       </div>
     </section>
   );
