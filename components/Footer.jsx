@@ -80,12 +80,12 @@ export default function Footer() {
           {/* Company Information */}
           <div className="space-y-2">
             <img 
-              src={data?.logo_url || `/logo2.png`}
+              src={data?.logo_url || `https://res.cloudinary.com/dq6mvqivd/image/upload/v1750098307/ImpactAcross/owner/WhatsApp_Image_2025-06-16_at_6.20.52_PM-removebg-preview_rrgeex.png`}
               alt="Company Logo" 
               className="h-20 w-20"
             />
-            <p className="text-2xl font-semibold text-white">{data?.name || "ImpactAcross"}</p>
-            <p className="font-semibold w-60 lg:w-60 pt-2">{data?.title || "Development Research and Consultancy PLC"}</p>
+            <p className="text-2xl font-semibold text-white">ImpactAcross</p>
+            <p className="font-semibold w-60 lg:w-60 pt-2">Development Research and Consultancy PLC</p>
           </div>
 
           {/* Navigation Links */}
